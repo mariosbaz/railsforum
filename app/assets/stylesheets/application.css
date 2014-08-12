@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+#signin {
+	text-decoration: none;
+	text-color: #fff;
+	background: blue;
+}
