@@ -9,12 +9,11 @@
 /*css for my railsforum logo*/
 
 #logo {
-		float:left;
-		padding-top: 9px;
-		padding-bottom:9px;
+		float:left;		
 		text-transform: uppercase;
 		letter-spacing: +1px;
 		font-weight: bold;
+		font-size: 1.5em;
 }
 
 #logo:hover {
@@ -22,16 +21,33 @@
 	text-decoration:underline;
 }
 
+.navbar-inner {
+	padding-top:12px;
+	padding-bottom:7px;
+	background-color:gray;
+}
+
 /*body css */
 body {
 	padding-top:60px;
 	text-align:center;
+	background-size: 2000px 960px;
+	margin:0 auto;
+	background-color:blue;
 }
 
-
 #center_unit {
-	
+	background-color:gray;
 	margin-top:10px;
 	text-align: center;
 
+}
+
+table,th,td
+{
+border:1px ;
+}
+
+section {
+  overflow: auto;
 }

@@ -9,6 +9,11 @@
               <li><%= link_to 'Edit profile', edit_user_registration_path%></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
               <li><%=link_to "Topics", "#" %></li>
+              <li><form class="form-search">
+                  <input type="text" class="input-medium search-query">
+                  <button type="submit" class="btn">Search</button>
+                </form>
+              </li>
             </ul>            
           <% else %>
             <ul class="nav pull-right">          

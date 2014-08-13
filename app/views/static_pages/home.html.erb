@@ -1,23 +1,22 @@
-<div class="center hero-unit" id="center_unit">
+<div class='container'>
+<div class="span12 hero-unit" id="center_unit">
     <h1>Welcome to the RailsForum!!!</h1>
-
     <h4>
       This is the rails forum. Please sign in, or signup and do it the Rails way...
-    </h4>
-
-    
+    </h4>    
   </div>
+</div>
 <div class='container'>
 	<p class="navbar-text pull-right">
 	<% if user_signed_in? %>
 	  Logged in as <strong><%= current_user.email %></strong>.
-	  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-	  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-	  <%= link_to "Show users", users_path, :class=>'navbar-link'%>
+	  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn' %> 
+	  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class =>  'btn'   %>
+	  <%= link_to "Show users", users_path, :class=> 'btn' %>
 
 	<% else %>
-	  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-	  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-	  <%= link_to "Show users", users_path, :class=>'navbar-link'%>
+	  <%= link_to "Sign up", new_user_registration_path, :class =>  'btn'  %> 
+	  <%= link_to "Login", new_user_session_path, :class =>  'btn'   %>
+	  <%= link_to "Show users", users_path, :class=> 'btn' %>
 	<% end %>
 </div>
