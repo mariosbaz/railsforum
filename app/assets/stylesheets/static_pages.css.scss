@@ -1,6 +1,37 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#signin {
+
+@import "bootstrap";
+
+/*header*/
+
+/*css for my railsforum logo*/
+
+#logo {
+		float:left;
+		padding-top: 9px;
+		padding-bottom:9px;
+		text-transform: uppercase;
+		letter-spacing: +1px;
+		font-weight: bold;
+}
+
+#logo:hover {
 	color:#fff;
+	text-decoration:underline;
+}
+
+/*body css */
+body {
+	padding-top:60px;
+	text-align:center;
+}
+
+
+#center_unit {
+	
+	margin-top:10px;
+	text-align: center;
+
 }

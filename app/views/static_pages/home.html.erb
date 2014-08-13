@@ -1,6 +1,13 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
-<div class='container' id='signin'>
+<div class="center hero-unit" id="center_unit">
+    <h1>Welcome to the RailsForum!!!</h1>
+
+    <h4>
+      This is the rails forum. Please sign in, or signup and do it the Rails way...
+    </h4>
+
+    
+  </div>
+<div class='container'>
 	<p class="navbar-text pull-right">
 	<% if user_signed_in? %>
 	  Logged in as <strong><%= current_user.email %></strong>.

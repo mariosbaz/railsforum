@@ -5,6 +5,7 @@ gem 'rails', '4.0.4'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'bootstrap-sass', '2.3.2.0'
 
 gem 'devise'
 
