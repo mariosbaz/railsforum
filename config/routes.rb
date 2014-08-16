@@ -3,11 +3,10 @@ Railsforum::Application.routes.draw do
   get "topic/index"
   get "topic/new"
   get "users/show"
-  get "users/edit"
   get "users/new"
   get "static_pages/home"
   get "static_pages/help"
-  devise_for :users
+  devise_for :users 
   resources :users
   resources :topics
   root to: "static_pages#home"

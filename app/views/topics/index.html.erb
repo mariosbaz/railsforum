@@ -1,6 +1,11 @@
+<div class="container">
 <h1>All Topics</h1>
+<div class="container">
  <table class="table table-bordered">
-
+ <tr>
+	<th>Topic Name</th>
+	<th>Created At</th>
+</tr>
   <% @topics.each do |topic| %>
   <tr class="topics" id="showing_topics">
 
@@ -9,3 +14,6 @@
 </tr>
 <% end %>
 </table>
+</div>
+</div>
+<%= link_to "Back", :back %>

@@ -6,9 +6,10 @@
       <nav>
         <% if user_signed_in? %>
         <div class="container" id="nav_left">
-            <ul class="nav pull-right">          
+            <ul class="nav pull-right">  
               <li><%= link_to 'Edit profile', edit_user_registration_path%></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
+              
               <li><%=link_to "Topics", topics_path %></li>
               <li><form class="form-search">
                   <input type="text" class="input-medium search-query">
@@ -20,7 +21,7 @@
           <% else %>
             <ul class="nav pull-right">          
               <li><%=link_to "Users", users_path%></li>
-              <li><%=link_to "Topics", "#" %></li>
+              <li><%=link_to "Topics", topics_path %></li>
               <li> <%= link_to "Sign up", new_user_registration_path %></li>
               <li><%= link_to "Login", new_user_session_path %></li>
             </ul>

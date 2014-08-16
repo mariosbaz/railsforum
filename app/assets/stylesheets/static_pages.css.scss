@@ -30,7 +30,7 @@
 
 /*body css */
 body {
-	padding-top:80px;
+	padding-top:100px;
 	text-align:center;
 	background-size: 2000px 960px;
 	margin:0 auto;
@@ -49,9 +49,18 @@ body {
 
 table,th,td
 {
-border:1px ;
+border:2px ;
+background-color:gray;
 }
 
 section {
   overflow: auto;
+}
+
+#form_container{
+	background-color:gray;
+	border-radius:15px;
+	text-align:center;
+    background-size: 10px 10px;
+
 }
