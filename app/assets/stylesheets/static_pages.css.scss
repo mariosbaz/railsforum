@@ -14,17 +14,21 @@
 		letter-spacing: +1px;
 		font-weight: bold;
 		font-size: 1.5em;
+		margin-left:100px
 }
 
 #logo:hover {
 	color:#fff;
 	text-decoration:underline;
 }
+.navbar-fixed-top{
+	background-color:#00ffff;
+
+}
 
 .navbar-inner {
 	padding-top:12px;
 	padding-bottom:7px;
-	background-color:gray;
 	margin-right:-40px;
 }
 
@@ -38,7 +42,7 @@ body {
 }
 
 #center_unit {
-	background-color:gray;
+	background-color:#5f9ea0;
 	margin-top:10px;
 	text-align: center;
 	margin-left:-20px;
@@ -50,7 +54,7 @@ body {
 table,th,td
 {
 border:2px ;
-background-color:gray;
+background-color:#00FFFF;
 }
 
 section {
@@ -58,9 +62,13 @@ section {
 }
 
 #form_container{
-	background-color:gray;
+	background-color:#5f9ea0;
 	border-radius:15px;
 	text-align:center;
     background-size: 10px 10px;
 
+}
+
+#mybox {
+  border: 1px solid green ;
 }

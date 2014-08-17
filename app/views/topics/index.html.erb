@@ -9,11 +9,17 @@
   <% @topics.each do |topic| %>
   <tr class="topics" id="showing_topics">
 
-    <td><%= topic.name %></td>
+    <td><%= link_to topic.name,topic_path(topic)%></td>
     <td><%=topic.user_id%></td>
 </tr>
 <% end %>
 </table>
 </div>
 </div>
-<%= link_to "Back", :back %>
+<div class="row-fluid" id="mybox">
+	<div class="span4">
+	<li ><%= link_to "Back", :back %></li>
+    <li><%= link_to "New Topic", new_topic_path%></li>
+
+</div>
+</div>
