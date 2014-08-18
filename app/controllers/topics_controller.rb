@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except=>[:show,:index]
 
 
   def new
@@ -43,6 +43,7 @@ class TopicsController < ApplicationController
    end
   def show
     @topic=Topic.find(params[:id])
+    @posts=@topic.posts.all
   end 
 
   private

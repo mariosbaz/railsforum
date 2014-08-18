@@ -5,12 +5,14 @@
  <tr>
 	<th>Topic Name</th>
 	<th>Created From</th>
+	<th>Updated</th>
 </tr>
   <% @topics.each do |topic| %>
   <tr class="topics" id="showing_topics">
 
-    <td><%= link_to topic.name,topic_path(topic)%></td>
+    <td><%= link_to topic.name,topic_path(topic),{:style => 'color: #000000',:class => "css_class"}%></td>
     <td><%=topic.user_id%></td>
+    <td><%=topic.updated_at%></td>
 </tr>
 <% end %>
 </table>

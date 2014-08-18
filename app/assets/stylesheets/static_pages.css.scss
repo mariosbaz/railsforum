@@ -36,7 +36,7 @@
 body {
 	padding-top:100px;
 	text-align:center;
-	background-size: 2000px 960px;
+	background-size: 3000px 1960px;
 	margin:0 auto;
 	background-color:blue;
 }
@@ -53,8 +53,17 @@ body {
 
 table,th,td
 {
-border:2px ;
-background-color:#00FFFF;
+	border:2px ;
+	background-color:gray;
+	color:#000;
+}
+
+a:link { 
+  color: #000;
+}
+
+a:hover { 
+  color: #ffffff;
 }
 
 section {
@@ -67,6 +76,22 @@ section {
 	text-align:center;
     background-size: 10px 10px;
 
+}
+
+#form_container.div{
+	text-allign:center;	
+}
+#error_explanation {
+	color:#f00;
+    margin-top:40px;
+    font-text:arial;
+	text-allign:center;
+	margin-left:+40px;
+}
+
+.center {
+	background-color:#f00;
+	text-allign:center;
 }
 
 #mybox {

@@ -1,24 +1,53 @@
 class PostsController < ApplicationController
+	
 	def index
+		@topic=Topic.find(params[:topic_id])
 		@posts=Post.all
 	end
 
 	def new
+		@topic=Topic.find(params[:topic_id])
 		@post=Post.new
 	end
 
 	def show
+		@topic=Topic.find(params[:topic_id])
+		@post=Post.find(params[:id],params[:topic_id])
 	end
   
   	def create
-  		@post=Post.new(content: post_params,topic_id: @topic.id,user_id: current_user.id )
-              render 'new'
+  		@topic=Topic.find(params[:topic_id])
+  		@post=Post.new
+  		@post=current_user.posts.build(post_params)
+  		@post.topic_id=@topic.id
+  		if @post.save
+  			flash[:success] = "Post created!"
+  			  render 'show'
+  		else render 'new'
+  		end		
+  		
+    end
 
+    def edit
+    	 @topic=Topic.find(params[:topic_id])
+    	 @post=Post.find(params[:id])    
+
+    end
+
+    def update
+        @topic=Topic.find(params[:topic_id])
+        @post=Post.find(params[:id])
+        if @post.update_attributes(post_params)
+        	flash[:success]="Post updated"
+        	render 'show'
+        else
+        	render 'edit'
         end
     end
 
 	  def destroy
-	  	@post=Post.find(params[:id])
+		@topic=Topic.find(params[:topic_id])
+        t@post=Post.find(params[:id])
 	  	@post.destroy
 	  end
 
@@ -27,5 +56,6 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:content)
     end
+   
 
 end
