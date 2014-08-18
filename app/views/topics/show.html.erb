@@ -1,2 +1,22 @@
 <h1>My Topics</h1>
 <h2><%= @topic.name %> created by <%=User.find_by_id(@topic.user_id).email%></h2>
+<% for post in @topic.posts %>
+	<div >	  
+	  <span class="right"><%= post.content %></span>
+	</div>
+	<% end %>
+
+<div class="row">
+
+  <div class="span12 offset2">
+    <p>Create a new Post</p>
+<section>
+	<%= form_for(@post, url: topic_posts_path) do |f| %>
+	  <div class="field">
+	    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+	  </div>
+	  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+	<% end %>
+      </section>
+</div>
+</div>

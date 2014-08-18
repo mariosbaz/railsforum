@@ -4,7 +4,7 @@
  <table class="table table-bordered">
  <tr>
 	<th>Topic Name</th>
-	<th>Created At</th>
+	<th>Created From</th>
 </tr>
   <% @topics.each do |topic| %>
   <tr class="topics" id="showing_topics">
@@ -19,7 +19,7 @@
 <div class="row-fluid" id="mybox">
 	<div class="span4">
 	<li ><%= link_to "Back", :back %></li>
-    <li><%= link_to "New Topic", new_topic_path%></li>
+    <li><%= link_to "New Topic", new_topic_path %></li>
 
 </div>
 </div>

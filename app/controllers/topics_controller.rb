@@ -28,15 +28,19 @@ class TopicsController < ApplicationController
   end
 
   def update
-    @topic = Topic.find(params[:id])
-    if @topic.update_attributes(topic_params)
-      flash[:success] = "Profile updated"
+    @topic = Topic.find(params[:id])   
+    if @topic.user_id ==current_user.id
+      if @topic.update_attributes(topic_params)
+        @topic.user_id=current_user.id
+        flash[:success] = "Profile updated"
+        redirect_to @topic
+      else
+        render 'edit'
+      end
+    else 
       redirect_to @topic
-    else
-      render 'edit'
-    end
   end
-   
+   end
   def show
     @topic=Topic.find(params[:id])
   end 

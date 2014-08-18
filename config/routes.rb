@@ -1,14 +1,21 @@
 Railsforum::Application.routes.draw do
 
+  get "posts/new"
+  get "posts/create"
   get "topic/index"
   get "topic/new"
   get "users/show"
   get "users/new"
   get "static_pages/home"
   get "static_pages/help"
+
   devise_for :users 
   resources :users
-  resources :topics
+  
+  resources :topics do
+    resources :posts
+  end
+  
   root to: "static_pages#home"
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,8 @@
+<h1>create a new post</h1>
+<section>
+<% for post in @topic.posts %>
+	<div >	  
+	  <span><%= post.content %></span>
+	</div>
+	<% end %>
+ </section>
