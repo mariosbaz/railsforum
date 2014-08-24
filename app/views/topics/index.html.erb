@@ -11,7 +11,7 @@
   <tr class="topics" id="showing_topics">
 
     <td><%= link_to topic.name,topic_path(topic),{:style => 'color: #000000',:class => "css_class"}%></td>
-    <td><%=topic.user_id%></td>
+    <td><%=topic.topic_author%></td>
     <td><%=topic.updated_at%></td>
 </tr>
 <% end %>

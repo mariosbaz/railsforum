@@ -1,3 +1,4 @@
 <h1>This is the show post page</h1>
 <h1><%=@post.content%></h1>
+<h1>created by <%=@post.post_author%></h1>
 <%=link_to "Edit", edit_topic_post_path(@topic,@post)%>

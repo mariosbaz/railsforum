@@ -1,5 +1,5 @@
 <h1>My Topic</h1>
-<h2><%= @topic.name %> created by <%=User.find_by_id(@topic.user_id).email%></h2>
+<h2><%= @topic.name %> created by <%=@topic.topic_author%></h2>
 <div class="container">
 <h1>All Posts</h1>
 <div class="container">
@@ -12,7 +12,7 @@
 	<% for post in @topic.posts %>
 		<tr>
 		    <td><%= post.content %></td>
-		    <td><%=User.find_by_id(post.user_id).email%></td>
+		    <td><%=post.post_author%></td>
 	    </tr>
     <% end %>
 		

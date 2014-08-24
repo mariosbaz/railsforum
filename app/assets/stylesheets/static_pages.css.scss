@@ -1,16 +1,16 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 @import "bootstrap";
 
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 /*header*/
 
 /*css for my railsforum logo*/
 
 #logo {
 		float:left;		
-		text-transform: uppercase;
 		letter-spacing: +1px;
 		font-weight: bold;
 		font-size: 1.5em;
@@ -22,7 +22,7 @@
 	text-decoration:underline;
 }
 .navbar-fixed-top{
-	background-color:#00ffff;
+	background-color:#00ffff;	
 
 }
 
@@ -35,19 +35,21 @@
 /*body css */
 body {
 	padding-top:100px;
-	text-align:center;
 	background-size: 3000px 1960px;
 	margin:0 auto;
 	background-color:blue;
+	margin-top:-35px;
+	text-align: center;
+	margin-left:70px;
+	margin-right:-20px;  
 }
 
 #center_unit {
 	background-color:#5f9ea0;
-	margin-top:10px;
+	margin-top:0;
 	text-align: center;
-	margin-left:-20px;
-	margin-right:-20px;
-  
+	margin-left:0;
+	margin-right:-20px;  
 }
 
 
@@ -74,26 +76,148 @@ section {
 	background-color:#5f9ea0;
 	border-radius:15px;
 	text-align:center;
-    background-size: 10px 10px;
-
+    background-size: 1px 1px;
+    @include box_sizing;
+    float: center;
 }
 
 #form_container.div{
-	text-allign:center;	
-}
-#error_explanation {
-	color:#f00;
-    margin-top:40px;
-    font-text:arial;
-	text-allign:center;
-	margin-left:+40px;
+	text-align:center;	
 }
 
 .center {
-	background-color:#f00;
-	text-allign:center;
+    text-align:center;
+}
+
+.center form {
+    display:inline-block;
 }
 
 #mybox {
   border: 1px solid green ;
 }
+
+
+#wrapper {
+left:100px;
+    padding-left: 50px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 200px;
+    width: 0;
+    height: 100%;
+    margin-left: -200px;
+    margin-top:0;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 100px;
+    }   
+
+    #sidebar-wrapper {
+        width: 250px;
+    }  
+        
+}
+.my_fluid_container {
+  position: fixed;
+  width: 400px  ;
+  height: 500px;
+  left: 50%;
+  top: 200px;
+  margin-left: -300px; /*half the width*/
+  text-align:right;
+}
+#error_explanation {
+    
+    width:250px;
+    @include box_sizing;
+}
+  
+  .border-form-div {
+  max-width: 250px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.border-form-div .form-signin-heading,
+.border-form-div .checkbox {
+  margin-bottom: 10px;
+}
+.border-form-div input[type="text"],
+.border-form-div input[type="email"],
+.border-form-div input[type="password"] {
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
+} 

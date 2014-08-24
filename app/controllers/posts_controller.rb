@@ -20,6 +20,8 @@ class PostsController < ApplicationController
   		@post=Post.new
   		@post=current_user.posts.build(post_params)
   		@post.topic_id=@topic.id
+      @post.post_author=User.find_by_id(@post.user_id).email
+
   		if @post.save
   			flash[:success] = "Post created!"
   			  render 'show'
@@ -46,8 +48,8 @@ class PostsController < ApplicationController
     end
 
 	  def destroy
-		@topic=Topic.find(params[:topic_id])
-        t@post=Post.find(params[:id])
+  		@topic=Topic.find(params[:topic_id])
+      @post=Post.find(params[:id])
 	  	@post.destroy
 	  end
 
@@ -57,5 +59,7 @@ class PostsController < ApplicationController
       params.require(:post).permit(:content)
     end
    
-
+    def find_author
+      @author=User.find_by_id(@post.user_id).email
+    end
 end

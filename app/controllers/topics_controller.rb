@@ -8,11 +8,12 @@ class TopicsController < ApplicationController
 
   def index
     @topics=Topic.all;
-  end
+    end
 
   def create
     @topic=Topic.new(topic_params)
     @topic.user_id=current_user.id
+    @topic.topic_author=User.find_by_id(@topic.user_id).email
     if @topic.save
        redirect_to @topic
     else
@@ -52,4 +53,5 @@ class TopicsController < ApplicationController
       params.require(:topic).permit(:name)
     end  
   
+
 end
