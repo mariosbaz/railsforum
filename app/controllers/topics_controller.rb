@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @topics=Topic.all;
+    @topics=Topic.paginate(page: params[:page])
     end
 
   def create

@@ -5,8 +5,15 @@ gem 'rails', '4.0.4'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+
+# Use to include bootstrap
 gem 'bootstrap-sass', '2.3.2.0'
 
+# Use gems for pagination
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
+
+# Use for User authentication
 gem 'devise'
 
 

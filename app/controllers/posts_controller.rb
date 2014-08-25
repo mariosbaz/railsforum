@@ -2,12 +2,13 @@ class PostsController < ApplicationController
 	
 	def index
 		@topic=Topic.find(params[:topic_id])
-		@posts=Post.all
+		@posts=Post.paginate(page: params[:page])
 	end
 
 	def new
 		@topic=Topic.find(params[:topic_id])
 		@post=Post.new
+    render ''
 	end
 
 	def show
@@ -22,11 +23,17 @@ class PostsController < ApplicationController
   		@post.topic_id=@topic.id
       @post.post_author=User.find_by_id(@post.user_id).email
 
-  		if @post.save
-  			flash[:success] = "Post created!"
-  			  render 'show'
-  		else render 'new'
-  		end		
+  respond_to do |format|
+        if @post.save
+          format.html { redirect_to @topic, notice: 'Post was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @post }
+
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
+    end
+  			
   		
     end
 

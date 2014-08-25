@@ -7,18 +7,28 @@
 	 <tr>
 		<th>Post</th>
 		<th>Created From</th>
+		<th>Posted </th>
 	</tr>
 	
-	<% for post in @topic.posts %>
-		<tr>
-		    <td><%= post.content %></td>
-		    <td><%=post.post_author%></td>
-	    </tr>
-    <% end %>
-		
+	<% @topic.posts.each do |post| %>
+		<%=div_for post do%>
+			<tr>
+			    <td><%= post.content %></td>
+			    <td><%=post.post_author%></td>
+			    <td><%=time_ago_in_words(post.created_at)%></td>
+		    </tr>
+	    <% end %>
+	<% end %>
 </table>
 </div>
 </div>
+<%=form_for([@topic,Post.new]) do |f|%>
+<p>
+	<%=f.label :content, "New Post"%></br>
+	<%=f.text_area :content%>
+</p>
+<p><%=f.submit "Add Post"%></p>
+<%end%>
 <div class="row-fluid" id="mybox">
 	<div class="span4">
 	<li ><%= link_to "Back", :back %></li>
