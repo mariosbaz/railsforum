@@ -27,7 +27,7 @@ class PostsController < ApplicationController
         if @post.save
           format.html { redirect_to @topic, notice: 'Post was successfully created.' }
           format.json { render action: 'show', status: :created, location: @post }
-
+          format.js
         else
           format.html { render action: 'new' }
           format.json { render json: @post.errors, status: :unprocessable_entity }

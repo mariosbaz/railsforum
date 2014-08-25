@@ -1,0 +1,7 @@
+<%=div_for post do%>
+			<tr>
+			    <td><%= post.content %></td>
+			    <td><%=post.post_author%></td>
+			    <td><%=time_ago_in_words(post.created_at)%></td>
+		    </tr>
+	    <% end %>

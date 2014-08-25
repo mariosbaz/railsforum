@@ -3,7 +3,7 @@
 <div class="container">
 <h1>All Posts</h1>
 <div class="container">
- <table class="table table-bordered">
+ <table class="table table-bordered" id="posts">
 	 <tr>
 		<th>Post</th>
 		<th>Created From</th>
@@ -11,24 +11,20 @@
 	</tr>
 	
 	<% @topic.posts.each do |post| %>
-		<%=div_for post do%>
-			<tr>
-			    <td><%= post.content %></td>
-			    <td><%=post.post_author%></td>
-			    <td><%=time_ago_in_words(post.created_at)%></td>
-		    </tr>
-	    <% end %>
+		 <%=render :partial=> @topic.posts.reverse%>
 	<% end %>
 </table>
 </div>
 </div>
-<%=form_for([@topic,Post.new]) do |f|%>
+
+<%=form_for([@topic,Post.new], remote: true) do |f|%>
 <p>
 	<%=f.label :content, "New Post"%></br>
 	<%=f.text_area :content%>
 </p>
 <p><%=f.submit "Add Post"%></p>
 <%end%>
+
 <div class="row-fluid" id="mybox">
 	<div class="span4">
 	<li ><%= link_to "Back", :back %></li>
