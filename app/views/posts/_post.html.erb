@@ -1,7 +1,11 @@
-<%=div_for post do%>
 			<tr>
-			    <td><%= post.content %></td>
+			    <td ><%= post.content %></td>
 			    <td><%=post.post_author%></td>
 			    <td><%=time_ago_in_words(post.created_at)%></td>
-		    </tr>
-	    <% end %>
+				<td><%=link_to "Show", topic_post_path(@topic, post), :class => 'btn' %>
+	            	<%if user_signed_in? and current_user.id==post.user_id  %>
+	            <%=link_to "Delete",topic_post_path(@topic,post) , method: :delete, confirm: "Are You sure?", :class => 'btn'%>
+	            <%=link_to "Edit",edit_topic_post_path(@topic, post), :class => 'btn' %>
+	            <%end%>
+	        	</td>
+			</tr>

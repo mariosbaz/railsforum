@@ -1,7 +1,7 @@
-<h1><%=@user.email%></h1>
+<h1><%="#{@user.email.split('@')[0]}"%></h1>
 <p>Here is a list of the Topic i've created</p>
 <div class="container">
-	<table class="table table-bordered">
+<table class="table table-striped">
 	<tr>
 		<th>Topic Name</th>
 		<th>Created At</th>
@@ -12,6 +12,7 @@
 	    <td><%= topic.created_at%></td>   
 	  </tr>
 	<% end %>
+
 	</table>
 </div>
 

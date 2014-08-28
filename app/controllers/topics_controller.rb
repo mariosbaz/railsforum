@@ -22,6 +22,9 @@ class TopicsController < ApplicationController
   end
   
   def destroy
+      @topic=Topic.find(params[:id])
+      @topic.destroy
+      redirect_to action: 'index'
   end
 
   def edit
@@ -44,7 +47,7 @@ class TopicsController < ApplicationController
    end
   def show
     @topic=Topic.find(params[:id])
-    @posts=@topic.posts.all
+    @posts=@topic.posts.paginate(page: params[:page])
   end 
 
   private

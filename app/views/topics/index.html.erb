@@ -3,21 +3,29 @@
 <div class="container">
 <h1>All Topics</h1>
 <div class="container">
- <table class="table table-bordered">
+ <table class="table table-striped">
  <tr>
 	<th>Topic Name</th>
 	<th>Created From</th>
 	<th>Updated</th>
+  <th>Action</th>
 </tr>
   <% @topics.each do |topic| %>
-  <tr class="topics" id="showing_topics">
 
-    <td><%= link_to topic.name,topic_path(topic),{:style => 'color: #000000',:class => "css_class"}%></td>
-    <td><%=topic.topic_author%></td>
-    <td><%=topic.updated_at%></td>
+    <td><%=topic.name %></td>
+          <td><%=topic.topic_author%></td>
+          <td><%=time_ago_in_words(topic.updated_at)%></td>
+          <td><%=link_to "Show", topic_path(topic), :class => 'btn' %>
+            <%if user_signed_in? and current_user.id==topic.user_id  %>
+            <%=link_to "Delete",topic , method: :delete, confirm: "Are You sure?", :class => 'btn'%>
+            <%=link_to "Edit",edit_topic_path(topic), :class => 'btn' %>
+            <%end%></td>
+
 </tr>
 <% end %>
 </table>
+
+
 </div>
 </div>
 <div class="row-fluid" id="mybox">

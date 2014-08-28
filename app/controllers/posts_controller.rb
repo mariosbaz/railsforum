@@ -1,19 +1,21 @@
 class PostsController < ApplicationController
-	
+	  before_action :authenticate_user!, :except=>[:show,:index]
+
 	def index
 		@topic=Topic.find(params[:topic_id])
-		@posts=Post.paginate(page: params[:page])
+    redirect_to topic_url(@topic.id)
+
 	end
 
 	def new
 		@topic=Topic.find(params[:topic_id])
 		@post=Post.new
-    render ''
+    
 	end
 
 	def show
 		@topic=Topic.find(params[:topic_id])
-		@post=Post.find(params[:id],params[:topic_id])
+		@post=Post.find(params[:id])
 	end
   
   	def create
@@ -58,15 +60,12 @@ class PostsController < ApplicationController
   		@topic=Topic.find(params[:topic_id])
       @post=Post.find(params[:id])
 	  	@post.destroy
+      redirect_to action: 'index'
 	  end
 
   private
 
     def post_params
       params.require(:post).permit(:content)
-    end
-   
-    def find_author
-      @author=User.find_by_id(@post.user_id).email
-    end
+    end   
 end

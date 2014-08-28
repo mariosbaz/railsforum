@@ -13,4 +13,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
+
 //= require_tree .
+
+window.onload=function(){
+    var currentTime = new Date().getHours();
+    if(5 < currentTime && currentTime < 18){
+        if (document.body) {
+			document.body.setAttribute("style","background-image:url('/images/image1.jpg');
+", "background-position: center");
+
+        }
+    } else {
+        if (document.body) {
+			document.body.setAttribute("style","background-image:url('/images/image1.jpg')";, "background-position: center");
+
+
+        }
+    }
+}
+

@@ -1,22 +1,24 @@
-<h1>My Topic</h1>
-<h2><%= @topic.name %> created by <%=@topic.topic_author%></h2>
+<h2>My <%= @topic.name %> created by <%=@topic.topic_author%></h2>
 <div class="container">
+	<%if @topic.posts.any?%>
 <h1>All Posts</h1>
 <div class="container">
- <table class="table table-bordered" id="posts">
+<table class="table table-striped">
 	 <tr>
 		<th>Post</th>
 		<th>Created From</th>
 		<th>Posted </th>
+		<th>Actions </th>
 	</tr>
+
+			 <%=render @posts%>
 	
-	<% @topic.posts.each do |post| %>
-		 <%=render :partial=> @topic.posts.reverse%>
-	<% end %>
+	<%= will_paginate @posts%>
+
 </table>
 </div>
 </div>
-
+<%end%>
 <%=form_for([@topic,Post.new], remote: true) do |f|%>
 <p>
 	<%=f.label :content, "New Post"%></br>

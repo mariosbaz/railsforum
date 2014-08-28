@@ -12,6 +12,7 @@
 #logo {
 		float:left;		
 		letter-spacing: +1px;
+    text-transform: uppercase;
 		font-weight: bold;
 		font-size: 1.5em;
 		margin-left:100px
@@ -52,14 +53,23 @@ body {
 	margin-right:-20px;  
 }
 
-
-table,th,td
-{
-	border:2px ;
-	background-color:gray;
-	color:#000;
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+   background-color: white;
 }
 
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #F0F8FF;
+ }
+
+
+table {
+    table-layout: fixed; /* This enforces the "col" widths. */
+}
+table th, table td {
+    overflow: hidden;
+    white-space: nowrap;
+}
 a:link { 
   color: #000;
 }
@@ -282,3 +292,18 @@ a {
   width:400px;
     @include box_sizing;
 }
+
+@-webkit-keyframes blackWhite {  
+  0% { background-color: white; }
+  50% { background-color: white; }
+  51% { background-color: black; }
+  100% { background-color: black; }
+}
+
+.blinkdiv {
+    height: 100px;
+    background-color: black;
+    -webkit-animation-name: blackWhite;  
+    -webkit-animation-iteration-count: infinite;  
+    -webkit-animation-duration: 2s; 
+}   

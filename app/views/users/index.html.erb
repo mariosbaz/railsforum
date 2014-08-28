@@ -1,12 +1,13 @@
 <div class="container">
 <h1>All users</h1>
- <table class="table table-bordered">
+
+<table class="table table-striped">
 
   <% @users.each do |user| %>
   <tr class="users" id="showing_users">
 
     <td><%= user.id %></td>
-    <td><%= link_to user.email, user_path(user) %></td>
+    <td><%= link_to "#{user.email.split('@')[0]}", user_path(user) %></td>
   
 </tr>
 <% end %>
