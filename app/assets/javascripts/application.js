@@ -19,7 +19,7 @@
 
 $(function() {
 
-  $( "#center_unit" ).fadeIn( 1000, function() {
+  $( "#welcome" ).fadeIn( 500, function() {
     // Animation complete
   });    
   
