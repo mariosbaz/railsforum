@@ -1,15 +1,16 @@
+<body id="home">
 <div class='container'>
 <div class="span12 hero-unit" id="center_unit">
     <h1>Welcome to the RailsForum!!!</h1>
     <h4>
-      This is the rails forum. Please sign in, or signup and do it the Rails way...
+      This is the rails forum. Please sign in, or signup to create your post or just browse our Posts and Topics...
     </h4>    
   </div>
 </div>
 <div class='container'>
 	<p class="navbar-text pull-right">
 	<% if user_signed_in? %>
-	  Logged in as <strong><%= current_user.email %></strong>.
+	  <div id="label">Logged in as <strong ><%= current_user.email %></strong>.</div>
 	  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'btn' %> 
 	  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class =>  'btn'   %>
 	  <%= link_to "Show users", users_path, :class=> 'btn' %>
@@ -20,3 +21,4 @@
 	  <%= link_to "Show users", users_path, :class=> 'btn' %>
 	<% end %>
 </div>
+</body>

@@ -1,8 +1,8 @@
 
-			<h2 id="header"><%="#{@user.email.split('@')[0]}"%></h2>   
+	<h2 id="header">User Name: <%="#{@user.email.split('@')[0]}"%></h2>   
 
 <% if @user.topics.any?%>
-	<p id= "label">Here is a list of the Topics I've created</p>
+	<p>Here is a list of the Topics I've created</p>
 	<div class="container">
 	<table class="table table-striped">
 		<tr>
@@ -28,6 +28,7 @@
 
 		</table>
 	</div>
+	<%else%>
 	<%end%>
 
 

@@ -18,10 +18,11 @@
 //= require_tree .
 
 $(function() {
-    $('#center_unit').fadeOut(500, function() {
-        $(this).text('Welcome to the RailsForum!!!').fadeIn(500);
-    });
-    
-    
+
+  $( "#center_unit" ).fadeIn( 1000, function() {
+    // Animation complete
+  });    
+  
 });
+
 
