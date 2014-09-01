@@ -1,37 +1,49 @@
-<h2>My <%= @topic.name %> created by <%=@topic.topic_author%></h2>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span4 offset4">
+			<h1 id="header"><%= @topic.name %> </h1> 	
+		</div>    
+	</div>
+</div>
+
+
+<%if @topic.posts.any?%>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span4 offset4">
+			<h1 id="header">All Posts </h1> 	
+		</div>    
+	</div>
+</div>
+	
 <div class="container">
-	<%if @topic.posts.any?%>
-<h1>All Posts</h1>
-<div class="container">
-<table class="table table-striped">
+<table class="table table-striped" >
+	<thead>
 	 <tr>
-		<th>Post</th>
+		<th>Post Preview</th>
 		<th>Created From</th>
 		<th>Posted </th>
 		<th>Actions </th>
 	</tr>
-
-			 <%=render @posts%>
-	
-	<%= will_paginate @posts%>
-
+    </thead>
+	<tbody>
+		<%=render @posts%>		
+		<%= will_paginate @posts%>
+	</tbody>
 </table>
-</div>
-</div>
-<%end%>
-<%=form_for([@topic,Post.new], remote: true) do |f|%>
-<p>
-	<%=f.label :content, "New Post"%></br>
-	<%=f.text_area :content%>
-</p>
-<p><%=f.submit "Add Post"%></p>
 <%end%>
 
-<div class="row-fluid" id="mybox">
-	<div class="span4">
-	<li ><%= link_to "Back", :back %></li>
-    <li><%=link_to "create a new post",new_topic_post_path(@topic)%>
-</li>
+
+</div>
+<div class='border-form-div'>
+		<%=form_for([@topic,Post.new], remote: true) do |f|%>
+		<p >
+			<%=f.label :content, "New Post"%></br>
+			<%=f.text_area :content%>
+		</p>
+		<p><%=f.submit "Add Post", class: "btn btn-large btn-primary"%><%= link_to "Back", :back, class: "btn btn-large btn-primary" %></p>
+
+		<%end%>
 
 </div>
 

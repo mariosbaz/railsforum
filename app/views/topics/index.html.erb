@@ -1,11 +1,18 @@
 <%= will_paginate %>
 
-<div class="container">
-<h1>All Topics</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class=" span4 offset4">
+  <h1 id="header">All Topics</h1>
+       </div>
+    </div>
+    <div class="container">
+
 <div class="container">
  <table class="table table-striped">
  <tr>
-	<th>Topic Name</th>
+  <th>Topic Name</th>
+	<th>Topic Posts</th>
 	<th>Created From</th>
 	<th>Updated</th>
   <th>Action</th>
@@ -13,27 +20,30 @@
   <% @topics.each do |topic| %>
 
     <td><%=topic.name %></td>
-          <td><%=topic.topic_author%></td>
-          <td><%=time_ago_in_words(topic.updated_at)%></td>
-          <td><%=link_to "Show", topic_path(topic), :class => 'btn' %>
+    <td><%=topic.posts.count%></td>
+    <td><%=topic.topic_author%></td>
+    <td><%=time_ago_in_words(topic.updated_at)%> ago</td>
+    <td>
+      <div class="row"><%=link_to "Show", topic_path(topic), :class => 'btn' %>
             <%if user_signed_in? and current_user.id==topic.user_id  %>
             <%=link_to "Delete",topic , method: :delete, confirm: "Are You sure?", :class => 'btn'%>
             <%=link_to "Edit",edit_topic_path(topic), :class => 'btn' %>
             <%end%></td>
+          </div>
 
 </tr>
 <% end %>
 </table>
 
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class=" span4 offset4">
+        <%= link_to "Back", :back, class: "btn btn-large btn-primary"%>
+          <%= link_to "New Topic", new_topic_path, class: "btn btn-large btn-primary" %>      
+        </div>
+    </div>
+   </div>
 
-</div>
-</div>
-<div class="row-fluid" id="mybox">
-	<div class="span4">
-	<li ><%= link_to "Back", :back %></li>
-    <li><%= link_to "New Topic", new_topic_path %></li>
-
-</div>
-</div>
+	
 
 <%= will_paginate %>

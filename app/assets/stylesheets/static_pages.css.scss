@@ -5,7 +5,37 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+/*body css */
+body {
+  padding-top:100px;
+  background-size: 2000px 960px;
+  background-image: url("background.jpg");  
+  color: #000;
+  margin:0 auto;
+  background-color:white;
+  margin-top:-35px;
+  text-align: center;
+  margin-left:50x;
+  margin-right:-20px;  
+}
+
+
 /*header*/
+
+#header {
+  color:white;
+  font-family: serif;
+  font-style: italic;
+}
+
+#post_header{
+  text-decoration:underline;
+  font-family: serif;
+  font-style: italic;
+  text-align:center;
+  
+}
 
 /*css for my railsforum logo*/
 
@@ -19,12 +49,12 @@
 }
 
 #logo:hover {
-	color:#fff;
+	color:black;
 	text-decoration:underline;
 }
+
 .navbar-fixed-top{
 	background-color:#00ffff;	
-
 }
 
 .navbar-inner {
@@ -33,25 +63,19 @@
 	margin-right:-40px;
 }
 
-/*body css */
-body {
-	padding-top:100px;
-	background-size: 3000px 1960px;
-	margin:0 auto;
-	background-color:blue;
-	margin-top:-35px;
-	text-align: center;
-	margin-left:70px;
-	margin-right:-20px;  
-}
+
 
 #center_unit {
-	background-color:#5f9ea0;
+  /*background-image: url("background.jpg");
+  background-repeat: repeat;*/
 	margin-top:0;
 	text-align: center;
 	margin-left:0;
 	margin-right:-20px;  
 }
+
+
+/*Table css*/
 
 .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
    background-color: white;
@@ -64,121 +88,35 @@ body {
 
 
 table {
-    table-layout: fixed; /* This enforces the "col" widths. */
+    table-layout: fixed; /* This enforces the "col" widths. */  
 }
+
 table th, table td {
     overflow: hidden;
     white-space: nowrap;
 }
+
+table thead {
+  background-color: white;
+}
+
+
+
+#label { 
+  color:white;
+}
+
 a:link { 
-  color: #000;
+  color: black;
+  text-color:black;
 }
 
 a:hover { 
-  color: #ffffff;
+  color: black;
 }
 
 section {
   overflow: auto;
-}
-
-#form_container{
-	background-color:#5f9ea0;
-	border-radius:15px;
-	text-align:center;
-    background-size: 1px 1px;
-    @include box_sizing;
-    float: center;
-}
-
-#form_container.div{
-	text-align:center;	
-}
-
-.center {
-    text-align:center;
-}
-
-.center form {
-    display:inline-block;
-}
-
-#mybox {
-  border: 1px solid green ;
-}
-
-
-#wrapper {
-left:100px;
-    padding-left: 50px;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-#sidebar-wrapper {
-    z-index: 1000;
-    position: fixed;
-    left: 200px;
-    width: 0;
-    height: 100%;
-    margin-left: -200px;
-    margin-top:0;
-    overflow-y: auto;
-    background: #000;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-/* Sidebar Styles */
-
-.sidebar-nav {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
-}
-
-.sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: #999999;
-}
-
-.sidebar-nav li a:hover {
-    text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
-}
-
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-    text-decoration: none;
-}
-
-.sidebar-nav > .sidebar-brand {
-    height: 65px;
-    font-size: 18px;
-    line-height: 60px;
-}
-
-.sidebar-nav > .sidebar-brand a {
-    color: #999999;
-}
-
-.sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
-    background: none;
 }
 
 @media(min-width:768px) {
@@ -200,17 +138,25 @@ left:100px;
   margin-left: -300px; /*half the width*/
   text-align:right;
 }
-#error_explanation {
-    
-    width:250px;
-    @include box_sizing;
-}
   
+
+.border-post-div {
+  max-width: 1000px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #F0F8FF;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+
   .border-form-div {
   max-width: 400px;
   padding: 19px 29px 29px;
   margin: 0 auto 20px;
-  background-color: yellow;
+  background-color: #F0F8FF;
   border: 1px solid #e5e5e5;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
@@ -232,7 +178,6 @@ left:100px;
   padding: 7px 9px;
 } 
 
-
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -244,18 +189,6 @@ pre {
   padding: 10px;
   font-size: 11px;
 }
-
-a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
-}
-
 
 #notice {
   color: green;
@@ -270,6 +203,7 @@ a {
 }
 
 #error_explanation {
+ 
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
@@ -291,19 +225,20 @@ a {
   }
   width:400px;
     @include box_sizing;
+} 
+
+#posts_table {
+  background-color:white
 }
 
-@-webkit-keyframes blackWhite {  
-  0% { background-color: white; }
-  50% { background-color: white; }
-  51% { background-color: black; }
-  100% { background-color: black; }
+#post_content {
+  text-align:center;
+  font-size:20px;
+  font-style: italic;
 }
 
-.blinkdiv {
-    height: 100px;
-    background-color: black;
-    -webkit-animation-name: blackWhite;  
-    -webkit-animation-iteration-count: infinite;  
-    -webkit-animation-duration: 2s; 
-}   
+#post_author{
+  font-family:arial;
+  font-style: italic;  
+  margin-bottom:15px;
+}

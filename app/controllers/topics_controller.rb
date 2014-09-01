@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
 
 
   def new
-    @topic=Topic.new;
+    @topic=Topic.new;    
   end
 
   def index
@@ -14,6 +14,7 @@ class TopicsController < ApplicationController
     @topic=Topic.new(topic_params)
     @topic.user_id=current_user.id
     @topic.topic_author=User.find_by_id(@topic.user_id).email
+    
     if @topic.save
        redirect_to @topic
     else

@@ -1,15 +1,29 @@
-<div class="container">
-<h1>All users</h1>
+<%= will_paginate %>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class=" span4 offset4">
+		  <h1 id="header">All Users</h1>
+       </div>
+    </div>
+    <div class="container">
 
 <table class="table table-striped">
-
+<tr>
+	<th>Username</th>
+	<th>Topics</th>
+  <th>Posts</th>
+</tr>
   <% @users.each do |user| %>
-  <tr class="users" id="showing_users">
-
-    <td><%= user.id %></td>
+  <tr class="users" >
     <td><%= link_to "#{user.email.split('@')[0]}", user_path(user) %></td>
-  
+    <td><%= user.topics.count%></td>
+    <td><%= user.posts.count%></td>  
+   
 </tr>
 <% end %>
 </table>
 </div>
+</div>
+
+<%= will_paginate %>

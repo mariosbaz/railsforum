@@ -1,26 +1,37 @@
-<h1><%="#{@user.email.split('@')[0]}"%></h1>
-<p>Here is a list of the Topic i've created</p>
+
+			<h2 id="header"><%="#{@user.email.split('@')[0]}"%></h2>   
+
+<% if @user.topics.any?%>
+	<p id= "label">Here is a list of the Topics I've created</p>
+	<div class="container">
+	<table class="table table-striped">
+		<tr>
+			<th>Topic Name</th>
+			<th>Created At</th>
+			<th>Actions</th>
+		</tr>
+		  <% @user.topics.each do |topic| %>
+
+		  <tr class="topics" >
+		    <td><%= topic.name %></td>
+		    <td><%=time_ago_in_words(topic.created_at)%> ago</td>  
+            <td><%=link_to "Show", topic_path(topic), :class => 'btn' %>
+            <%if user_signed_in? and current_user.id==topic.user_id  %>
+            <%=link_to "Delete",topic , method: :delete, confirm: "Are You sure?", :class => 'btn'%>
+            <%=link_to "Edit",edit_topic_path(topic), :class => 'btn' %>
+            <%end%></td>
+          </div>
+
+         </tr> 
+		  </tr>
+		<% end %>
+
+		</table>
+	</div>
+	<%end%>
+
+
 <div class="container">
-<table class="table table-striped">
-	<tr>
-		<th>Topic Name</th>
-		<th>Created At</th>
-	</tr>
-	  <% @user.topics.each do |topic| %>
-	  <tr class="topics" >
-	    <td><%= topic.name %></td>
-	    <td><%= topic.created_at%></td>   
-	  </tr>
-	<% end %>
-
-	</table>
-</div>
-
-
-
-
-<div class="container">
-<%=link_to "Create a new Topic", new_topic_path%>
-<%= link_to "Change your password", edit_user_registration_path %>
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back, class: "btn btn-large btn-primary" %>
+<%= link_to "New Topic", new_topic_path, class: "btn btn-large btn-primary" %>
 </div>

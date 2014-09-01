@@ -1,4 +1,13 @@
-<h1>This is the show post page</h1>
-<h1><%=@post.content%></h1>
-<h1>created by <%=@post.post_author%></h1>
-<%=link_to "Edit", edit_topic_post_path(@topic,@post)%>
+<div class="border-post-div">
+			<h1 id="post_header">Post Content</h1> 	
+			<div id='post_content'> <%=@post.content%></div>
+			<h3 id="post_header"> Author </h3>
+            <div id="post_author"><%=@post.post_author%></div>	
+			<h3 id="post_header"> Last Updated</h3>
+            <div><%=time_ago_in_words(@post.updated_at)%> ago</div>	
+
+<%if user_signed_in? and current_user.id==@post.user_id %>
+<%=link_to "Edit Post", edit_topic_post_path(@topic,@post),class: "btn btn-large btn-primary"%>
+<%=link_to "Back", :back,class: "btn btn-large btn-primary"%>
+		<%end%>
+        </div>

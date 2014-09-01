@@ -25,17 +25,15 @@ class PostsController < ApplicationController
   		@post.topic_id=@topic.id
       @post.post_author=User.find_by_id(@post.user_id).email
 
-  respond_to do |format|
+      respond_to do |format|
         if @post.save
           format.html { redirect_to @topic, notice: 'Post was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @post }
+          format.json
           format.js
         else
           format.html { render action: 'new' }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
         end
-    end
-  			
+    end  			
   		
     end
 
@@ -59,8 +57,14 @@ class PostsController < ApplicationController
 	  def destroy
   		@topic=Topic.find(params[:topic_id])
       @post=Post.find(params[:id])
-	  	@post.destroy
-      redirect_to action: 'index'
+      respond_to do |format|
+        if @post.destroy
+          format.html { redirect_to @topic, notice: 'Post was successfully deleted.' }
+          format.js
+        else
+          format.html { render action: 'new' }
+        end
+    end     
 	  end
 
   private
