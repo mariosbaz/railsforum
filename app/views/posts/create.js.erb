@@ -1,4 +1,5 @@
+
 var new_post=$("<%=escape_javascript(render(:partial => @post))%>").hide();
-$('#table').append(new_post);
+$('#new_posts').append(new_post);
 $("#post_<%=@post.id%>").fadeIn("slow");
 $("#new_post")[0].reset();

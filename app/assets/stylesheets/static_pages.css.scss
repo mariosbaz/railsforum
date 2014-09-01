@@ -7,6 +7,7 @@
 }
 
 /*body css */
+
 body {
   padding-top:100px;
   background-size: 2000px 960px;
@@ -21,7 +22,7 @@ body {
 }
 
 
-/*header*/
+/*css for some headers*/
 
 #header {
   color:white;
@@ -36,13 +37,7 @@ body {
   text-align:center;  
 }
 
-#home{
-    background-repeat: no-repeat; 
-    background-image: url("home.jpg");  
-    background-size: 2000px 1000px;
-}
-
-/*css for my railsforum logo*/
+/*css for the header*/
 
 #logo {
 		float:left;		
@@ -50,11 +45,12 @@ body {
     text-transform: uppercase;
 		font-weight: bold;
 		font-size: 1.5em;
-		margin-left:100px
+		margin-left:200px;
+    margin-top:10px;
+    color:black;
 }
 
-#logo:hover {
-	
+#logo:hover {	
 	text-decoration:underline;
 }
 
@@ -73,14 +69,22 @@ body {
 	margin-right:-40px;
 }
 
+/*styling center hero unit*/
+
 #center_unit {
 	margin-top:0;
 	text-align: center;
 	margin-left:0;
 	margin-right:-20px;  
-  display:none;
 }
 
+/*different background for the home page*/
+
+#home{
+    background-repeat: no-repeat; 
+    background-image: url("home.jpg");  
+    background-size: 2000px 1000px;
+}
 
 /*Table css*/
 
@@ -107,8 +111,6 @@ table thead {
   background-color: white;
 }
 
-
-
 #label { 
   color:white;
 }
@@ -124,28 +126,7 @@ a:hover {
 
 section {
   overflow: auto;
-}
-
-@media(min-width:768px) {
-    #wrapper {
-        padding-left: 100px;
-    }   
-
-    #sidebar-wrapper {
-        width: 250px;
-    }  
-        
-}
-.my_fluid_container {
-  position: fixed;
-  width: 400px  ;
-  height: 500px;
-  left: 50%;
-  top: 200px;
-  margin-left: -300px; /*half the width*/
-  text-align:right;
-}
-  
+}  
 
 .border-post-div {
   max-width: 1000px;
@@ -234,6 +215,7 @@ pre {
     @include box_sizing;
 } 
 
+/*some styling for the posts*/
 #posts_table {
   background-color:white
 }

@@ -27,11 +27,11 @@ class PostsController < ApplicationController
 
       respond_to do |format|
         if @post.save
-          format.html { redirect_to @topic, notice: 'Post was successfully created.' }
+          format.html { render 'show', notice: 'Post was successfully created.' }
           format.json
           format.js
         else
-          format.html { render action: 'new' }
+          format.html { render 'show' }
         end
     end  			
   		
@@ -40,7 +40,6 @@ class PostsController < ApplicationController
     def edit
     	 @topic=Topic.find(params[:topic_id])
     	 @post=Post.find(params[:id])    
-
     end
 
     def update

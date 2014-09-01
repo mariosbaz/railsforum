@@ -1,11 +1,11 @@
-<div class="span12 offset2">
+<div class='border-form-div'>
+		<%=form_for([@topic,Post.new], remote: true) do |f|%>
+		<p >
+			<%=f.label :content, "New Post"%></br>
+			<%=f.text_area :content%>
+		</p>
+		<p><%=f.submit "Add Post", class: "btn btn-large btn-primary"%><%= link_to "Back", :back, class: "btn btn-large btn-primary" %></p>
 
-	<%= form_for [@topic,@post] do |f| %>
-
-	  <%= f.label :content%>
-	  <%= f.text_field :content %>	 
-
-	  <div><%= f.submit "Create", class: "btn btn-large btn-primary"%></div>
-	<% end %>
+		<%end%>
 
 </div>

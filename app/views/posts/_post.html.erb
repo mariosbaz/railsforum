@@ -1,6 +1,6 @@
 			
 			<%=div_for post do%>
-			<tr >
+			<tr>
 			    <td ><%= post.content %></td>
 			    <td><%=post.post_author%></td>
 			    <td><%=time_ago_in_words(post.created_at)%> ago</td>
@@ -10,5 +10,5 @@
 	            <%=link_to "Edit",edit_topic_post_path(@topic, post), :class => 'btn' %>
 	            <%end%>
 	        	</td>
-			</tr>
+	        	</tr>
 			<%end%>
