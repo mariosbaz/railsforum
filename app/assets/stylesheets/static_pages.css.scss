@@ -30,12 +30,7 @@ body {
   font-style: italic;
 }
 
-#post_header{
-  text-decoration:underline;
-  font-family: serif;
-  font-style: italic;
-  text-align:center;  
-}
+
 
 /*css for the header*/
 
@@ -137,6 +132,7 @@ section {
 
 .border-post-div {
   max-width: 1000px;
+
   padding: 19px 29px 29px;
   margin: 0 auto 20px;
   background-color: #F0F8FF;
@@ -144,8 +140,8 @@ section {
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
+          margin-top:20px;
 }
-
 
   .border-form-div {
   max-width: 400px;
@@ -159,6 +155,8 @@ section {
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
           box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  margin-top:20px;
+
 }
 .border-form-div .form-signin-heading,
 .border-form-div .checkbox {
@@ -229,8 +227,9 @@ pre {
 
 #post_content {
   text-align:center;
-  font-size:20px;
-  font-style: italic;
+  font-size:17px;
+  font-family:Arial;
+  overflow:hidden;
 }
 
 #post_author{
@@ -238,4 +237,114 @@ pre {
   font-style: italic;  
   margin-bottom:15px;
 }
+
+/*css for the post show method*/
+
+#postheader{
+  font-family: serif;
+  font-style: italic;
+  text-align:center;  
+}
+
+#postcontent{
+ word-wrap: break-word;
+ margin-right:25px;
+}
+
+
+/*css for the topics table*/
+
+
+#topic_container{
+  background-color:#F0F8FF;
+  border-radius: 15px;
+  margin-top:15px;
+  margin-bottom:15px;
+  padding-left:15px;
+  width:95%;
+}
+
+#topic_header{
+  font-size:1.5em;
+  font-style:italic;
+  font-family:fantasy;
+  font-weight:bold;
+  overflow: hidden;
+  height:40px;
+  border-radius:5px;
+  margin-top:20px;
+  border-bottom: 2px solid black;
+  }
+
+#topic_box{
+  border-radius:5px;
+  overflow: hidden;   
+  height:40px;
+  margin-top:15px;
+  border-bottom: 1px solid black;
+  width:97%;
+}
+
+/*css for the users table*/
+
+
+#users_container{
+  background-color:#F0F8FF;
+  border-radius: 15px;
+  margin-top:15px;
+  margin-bottom:15px;
+  padding-left:15px; 
+}
+
+#user_header{
+   font-size:1.5em;
+  font-style:italic;
+  font-family:fantasy;
+  font-weight:bold;
+  overflow: hidden;
+  height:40px;
+  border-radius:5px;
+  margin-top:20px;
+  border-bottom: 2px solid black;
+  }
+
+#user_box{
+  border-radius:5px;
+  overflow: hidden;   
+  height:40px;
+  margin-top:15px;
+  border-bottom: 1px solid black;
+     }
+
+/*css for the posts table*/
+
+
+#posts_container{
+  background-color:#F0F8FF;
+  border-radius: 15px;
+  margin-top:15px;
+  margin-bottom:15px;
+  padding-left:15px;
+  
+}
+
+#post_header{
+  font-size:1.5em;
+  font-style:italic;
+  font-family:fantasy;
+  font-weight:bold;
+  overflow: hidden;
+  height:40px;
+  border-radius:5px;
+  margin-top:20px;
+  border-bottom: 2px solid black;
+  }
+
+#post_box{
+  border-radius:5px;
+  overflow: hidden;   
+  height:40px;
+  margin-top:15px;
+  border-bottom: 1px solid black;
+     }
 

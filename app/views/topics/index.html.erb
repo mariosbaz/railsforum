@@ -8,32 +8,38 @@
     </div>
     <div class="container">
 
-<div class="container">
- <table class="table table-striped">
- <tr>
-  <th>Topic Name</th>
-	<th>Topic Posts</th>
-	<th>Created From</th>
-	<th>Updated</th>
-  <th>Action</th>
-</tr>
-  <% @topics.each do |topic| %>
-
-    <td><%=topic.name %></td>
-    <td><%=topic.posts.count%></td>
-    <td><%=topic.topic_author%></td>
-    <td><%=time_ago_in_words(topic.updated_at)%> ago</td>
-    <td>
-      <div class="row"><%=link_to "Show", topic_path(topic), :class => 'btn' %>
+<div class="container" id="topic_container">
+ <div class="row" id="topic_header">
+    <div class="span2">Topic Name</div>
+    <div class="span2">Topic Posts</div>
+    <div class="span2">Created From</div>
+    <div class="span2">Updated</div>
+    <div class="span3">Action</div>
+</div>
+    
+  <div class="row">
+    <div class="span12">
+       <% @topics.each do |topic| %>
+        <div class="row" id="topic_box">
+            <div class="span2" id="post_content"><%=topic.name %></div>
+            <div class="span2"><%=topic.posts.count%>
+            </div>
+            <div class="span2"><%=topic.topic_author%></div>
+            <div class="span2"><%=time_ago_in_words(topic.updated_at)%> ago</div>
+            <div class="span3"><%=link_to "Show", topic_path(topic), :class => 'btn' %>
             <%if user_signed_in? and current_user.id==topic.user_id  %>
             <%=link_to "Delete",topic , method: :delete, confirm: "Are You sure?", :class => 'btn'%>
             <%=link_to "Edit",edit_topic_path(topic), :class => 'btn' %>
-            <%end%></td>
-          </div>
+            <%end%></div>          
 
-</tr>
-<% end %>
-</table>
+        </div>
+       <%end%>
+    </div>   
+    </div>
+ 
+</div>
+     
+
 
 <div class="container-fluid">
     <div class="row-fluid">

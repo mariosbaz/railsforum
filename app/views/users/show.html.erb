@@ -3,30 +3,35 @@
 
 <% if @user.topics.any?%>
 	<p id= "label">Here is a list of the Topics I've created</p>
-	<div class="container">
-	<table class="table table-striped">
-		<tr>
-			<th>Topic Name</th>
-			<th>Created At</th>
-			<th>Actions</th>
-		</tr>
-		  <% @user.topics.each do |topic| %>
+	    </div>
+<div class="container" id="users_container">
+ <div class="row" id="user_header">
 
-		  <tr class="topics" >
-		    <td><%= topic.name %></td>
-		    <td><%=time_ago_in_words(topic.created_at)%> ago</td>  
-            <td><%=link_to "Show", topic_path(topic), :class => 'btn' %>
+    <div class="span4">Topic Name</div>
+    <div class="span4">Created At</div>
+    <div class="span4">Actions</div>    
+</div> 
+  <div class="row">
+    <div class="span12">
+ <% @user.topics.each do |topic| %>        
+ <div class="row" id="user_box">
+            <div class="span4 "><%= topic.name %></div>
+            <div class="span4"><%=time_ago_in_words(topic.created_at)%> ago
+            </div>
+            <div class="span4"><%=link_to "Show", topic_path(topic), :class => 'btn' %>
             <%if user_signed_in? and current_user.id==topic.user_id  %>
-            <%=link_to "Delete",topic , method: :delete, confirm: "Are You sure?", :class => 'btn'%>
+            <%=link_to "Delete",topic , method: :delete, confirm: "Are You sure?", :class => "btn btn-default btn-lg"%>
             <%=link_to "Edit",edit_topic_path(topic), :class => 'btn' %>
-            <%end%></td>
-          </div>
+            <%end%></div>        
+        </div>
+       <%end%>
+    </div>   
+    </div>
+ 
+</div>  
+</div>
+			
 
-         </tr> 
-		  </tr>
-		<% end %>
-
-		</table>
 	</div>
 	<%else%>
 	<%end%>

@@ -6,24 +6,27 @@
 		  <h1 id="header">All Users</h1>
        </div>
     </div>
-    <div class="container">
+<div class="container" id="users_container" >
+ <div class="row" id="user_header" >
 
-<table class="table table-striped">
-<tr>
-	<th>Username</th>
-	<th>Topics</th>
-  <th>Posts</th>
-</tr>
-  <% @users.each do |user| %>
-  <tr class="users" >
-    <td><%= link_to "#{user.email.split('@')[0]}", user_path(user) %></td>
-    <td><%= user.topics.count%></td>
-    <td><%= user.posts.count%></td>  
-   
-</tr>
-<% end %>
-</table>
-</div>
+    <div class="span4">Username</div>
+    <div class="span4">Topics Created</div>
+    <div class="span4">Posts Created</div>    
+</div> 
+  <div class="row">
+    <div class="span12">
+        <% @users.each do |user| %>
+        <div class="row" id="user_box">
+            <div class="span4 "><%= link_to "#{user.email.split('@')[0]}", user_path(user) %></div>
+            <div class="span4"><%= user.topics.count%>
+            </div>
+            <div class="span4"><%= user.posts.count%></div>        
+        </div>
+       <%end%>
+    </div>   
+    </div>
+ 
+</div>  
 </div>
 
 <%= will_paginate %>

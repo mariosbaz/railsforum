@@ -16,28 +16,16 @@
 	</div>
 </div>
 	
-<div class="container">
-<table class="table table-striped" >
-	<thead>
-	 <tr>
-		<th>Post Preview</th>
-		<th>Created From</th>
-		<th>Posted </th>
-		<th>Actions </th>
-	</tr>
-    </thead>
-	<tbody >
+<div class="container" id="posts_container">
+<div class="row" id="post_header">	 
+		<div class="span3">Post Preview</div>
+		<div class="span3">Created From</div>
+		<div class="span3">Posted </div>
+		<div class="span3">Actions </div>
+	</div>
 		<%=render @posts%>		
-		<%= will_paginate @posts%>
-	</tbody>
-</table>
-
+		
 <%end%>
-
-<table class="table" id="new_posts">
-	
-
-</table>
 
 
 </div>
@@ -55,4 +43,5 @@
 
 
 
+<%= will_paginate @posts%>
 
