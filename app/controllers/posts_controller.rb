@@ -71,4 +71,8 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:content)
     end   
+
+    def find_topic_name
+      @topname=Topic.all.find_by_id(@post.topic_id).name      
+    end
 end

@@ -1,32 +1,69 @@
-<%= will_paginate %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default" id="users_panel">
+                <div class="panel-heading">
+                <h2>All Users</h2>
+                </div>
+                <div class="col-md-5"> User </div>
+                <div class="col-md-3 col-md-offset-4">Posts 
+                </div>
+                <div class="panel-body" >
+                    <%@users.each do |user|%>
+                    <div class="container" id="posts_topic_show">   
+                        <div class="col-md-9" id="user_index"><%=user.email %></div>
+                        <div class="col-md-3" id="badge"><span class="badge"><%=user.posts.count %></span></div>
+                    </div>
+                    <%end%>
+                </div>
 
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class=" span4 offset4">
-		  <h1 id="header">All Users</h1>
-       </div>
-    </div>
-<div class="container" id="users_container" >
- <div class="row" id="user_header" >
-
-    <div class="span4">Username</div>
-    <div class="span4">Topics Created</div>
-    <div class="span4">Posts Created</div>    
-</div> 
-  <div class="row">
-    <div class="span12">
-        <% @users.each do |user| %>
-        <div class="row" id="user_box">
-            <div class="span4 "><%= link_to "#{user.email.split('@')[0]}", user_path(user) %></div>
-            <div class="span4"><%= user.topics.count%>
             </div>
-            <div class="span4"><%= user.posts.count%></div>        
         </div>
-       <%end%>
-    </div>   
+        
+        <div class="col-md-6">
+            <div class="panel panel-default" id="users_panel">
+                <div class="panel-heading">
+                <h2>New Users</h2>
+                </div>
+                 <div class="col-md-5"> User </div>
+                <div class="col-md-3 col-md-offset-4">Posts 
+                </div>
+                <div class="panel-body" >
+                    <%@newusers.each do |user|%>
+                    <div class="container" id="posts_topic_show">  
+                    
+                        <div class="col-md-9" id="user_index"><%=user.email %></div>
+                        <div class="col-md-3" id="badge"><span class="badge"><%=user.posts.count %></span></div>
+                    </div>
+                    <%end%>
+                </div>
+
+                </div>
+            </div>
+        </div>
+         <!-- 
+        <div class="col-md-4">
+            <div class="panel panel-default" id="users_panel">
+                <div class="panel-heading">
+                <h2>Most Active Users</h2>
+                </div>
+                <div class="panel-body" >
+                  <%@users.each do |user|%>
+                    <div class="container" id="posts_topic_show">  
+                    
+                        <div class="col-md-6" id="user_index"><%=user.email %></div>
+                        <div class="col-md-6" id="badge"><span class="badge"><%=user.posts.count %></span></div>
+                    </div>
+                    <%end%>
+                </div>
+
+                </div>
+            </div>
+        </div>-->
     </div>
- 
-</div>  
 </div>
+
+
+
 
 <%= will_paginate %>

@@ -7,7 +7,8 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @topics=Topic.paginate(page: params[:page])
+    @topics=Topic.paginate(page: params[:page],:order => 'created_at DESC')
+    @newtopics=Topic.all(order: "created_at DESC", limit: 5)
   end
 
   def create
@@ -46,9 +47,10 @@ class TopicsController < ApplicationController
       redirect_to @topic
   end
    end
+
   def show
     @topic=Topic.find(params[:id])
-    @posts=@topic.posts.paginate(page: params[:page])
+    @posts=@topic.posts.paginate(page: params[:page],:order => 'created_at DESC')
   end 
 
   private
