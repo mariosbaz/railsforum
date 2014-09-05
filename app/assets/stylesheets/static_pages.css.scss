@@ -43,6 +43,7 @@ body {
     color:gray;
     width:80%;
     }
+
 #logo:hover {	
 	text-decoration:underline;
 }
@@ -51,15 +52,17 @@ body {
   text-transform: uppercase;
     font-weight: bold;
 }
+
 .navbar-header{
   margin-left:-15px;
   margin-top:10px;
-  margin-bottom:10px;
-  
+  margin-bottom:10px;  
 }
+
 .navbar-fixed-top{
     border-bottom: 4px solid rgb(10, 75, 95);
 }
+
 .navbar-nav.navbar-right:last-child{
   margin-right:80px;
 }
@@ -81,13 +84,6 @@ margin-left:10px;
   font-family:arial;
 }
 
-#welcome {
-  display:none;
-}
-
-/*different background for the home page*/
-
-
 #label { 
   color:black;
   margin-bottom:10px;
@@ -107,30 +103,31 @@ section {
   overflow: auto;
 }  
 
+/*styling some containers*/
+
 .border-post-div {
   max-width: 1000px;
-
   padding: 19px 29px 29px;
   margin: 0 auto 20px;
+  margin-top:20px;
   background-color: #F0F8FF;
   border: 1px solid #e5e5e5;  
-          margin-top:20px;
 }
 
-  .border-form-div {
+.border-form-div {
   max-width: 400px;
   padding: 19px 29px 29px;
   margin: 0 auto 20px;
+  margin-top:20px;
   background-color: #F0F8FF;
   border: 1px solid #e5e5e5;
-  
-  margin-top:20px;
-
 }
+
 .border-form-div .form-signin-heading,
 .border-form-div .checkbox {
   margin-bottom: 10px;
 }
+
 .border-form-div input[type="text"],
 .border-form-div input[type="email"],
 .border-form-div input[type="password"] {
@@ -156,6 +153,8 @@ pre {
 #notice {
   color: green;
 }
+
+/*styling devise error messages*/
 
 .field_with_errors {
   padding: 1px;
@@ -191,9 +190,6 @@ pre {
 } 
 
 /*some styling for the posts*/
-#posts_table {
-  background-color:white
-}
 
 #post_content {
   text-align:left;
@@ -201,8 +197,6 @@ pre {
   font-family:Verdana;
   margin-left:20px;
   word-wrap: break-word;
-
-
 }
 
 #post_author{
@@ -210,121 +204,6 @@ pre {
   font-style: italic;  
   margin-bottom:15px;
 }
-
-/*css for the post show method*/
-
-#postheader{
-  font-family: serif;
-  font-style: italic;
-  text-align:center;  
-}
-
-#postcontent{
- word-wrap: break-word;
- margin-right:25px;
-}
-
-
-/*css for the topics table*/
-
-
-#topic_container{
-  background-color:#F0F8FF;
-  border-radius: 15px;
-  margin-top:15px;
-  margin-bottom:15px;
-  padding-left:15px;
-  width:95%;
-}
-
-#topic_header{
-  font-size:1.5em;
-  font-style:italic;
-  font-family:fantasy;
-  font-weight:bold;
-  overflow: hidden;
-  height:40px;
-  border-radius:5px;
-  margin-top:20px;
-  border-bottom: 2px solid black;
-  }
-
-#topic_box{
-  border-radius:5px;
-  overflow: hidden;   
-  height:40px;
-  margin-top:15px;
-  border-bottom: 1px solid black;
-  width:97%;
-}
-
-/*css for the users table*/
-
-
-#users_container{
-  background-color:#F0F8FF;
-  border-radius: 15px;
-  margin-top:15px;
-  margin-bottom:15px;
-  padding-left:15px; 
-}
-
-#user_header{
-   font-size:1.5em;
-  font-style:italic;
-  font-family:fantasy;
-  font-weight:bold;
-  overflow: hidden;
-  height:40px;
-  border-radius:5px;
-  margin-top:20px;
-  border-bottom: 2px solid black;
-  }
-
-#user_box{
-  border-radius:5px;
-  overflow: hidden;   
-  height:40px;
-  margin-top:15px;
-  border-bottom: 1px solid black;
-     }
-
-/*css for the posts table*/
-
-
-#posts_container{
-  background-color:#F0F8FF;
-  margin-top:15px;
-  margin-bottom:15px;
-  margin-left:4px;
-  padding-left:15px;
-  word-wrap: break-word;
-  text-align:left;
-  width:50%;
-  float:left;
-  border-bottom:1px solid black;
-
-}
-
-#post_header{
-  font-size:1.5em;
-  font-style:italic;
-  font-family:fantasy;
-  font-weight:bold;
-  overflow: hidden;
-  height:40px;
-  border-radius:5px;
-  margin-top:20px;
-  border-bottom: 2px solid black;
-  }
-
-#post_box{
-  border-radius:5px;
-  overflow: hidden;   
-  height:40px;
-  margin-top:15px;
-  border-bottom: 1px solid black;
-     }
 
 #home_upper_container{
   border-bottom:1px solid black;
@@ -338,6 +217,8 @@ pre {
   float:left;
   margin-left:50px;
 }
+
+/*helping labels*/
 
 #labeltop{
   font-size:10px;
@@ -357,6 +238,8 @@ pre {
   text-align:left;
   margin-top:10px;
 }
+
+/*posts and topics container*/
 
 #posts_topic_show{
   border-radius:15px;
@@ -384,6 +267,8 @@ pre {
 #user_index {
   text-align:left;
 }
+
+/*change panel header background color*/
 
 .panel-default > .panel-heading{
   background-color:rgb(234, 244, 246);

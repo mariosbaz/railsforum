@@ -1,7 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!, :except=>[:show,:index]
 
-
   def new
     @topic=Topic.new;    
   end
@@ -45,7 +44,7 @@ class TopicsController < ApplicationController
       end
     else 
       redirect_to @topic
-  end
+    end
    end
 
   def show
@@ -56,8 +55,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-      params.require(:topic).permit(:name)
-    end  
-  
+    params.require(:topic).permit(:name)
+  end    
 
 end

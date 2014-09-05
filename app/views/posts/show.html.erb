@@ -1,20 +1,19 @@
-<div class="border-form-div">
-	
-<div class="container-fluid">
-	 <div class="row-fluid">
-		    <div id="postheader">   <h2>Post Content</h2>
-		    </div>    
+<div class="border-form-div">	
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div id="postheader">   <h2>Post Content</h2>
+	  </div>    
     </div>
 
     <div class="row-fluid">
-		    <div id="postcontent">   <h4><%=@post.content%></h4>
-		    </div>    
+	  <div id="postcontent">   <h4><%=@post.content%></h4>
+	  </div>    
     </div>
 
 
-<%if user_signed_in? and current_user.id==@post.user_id %>
-<%=link_to "Edit Post", edit_topic_post_path(@topic,@post),class: "btn btn-large btn-primary"%>
-<%=link_to "Back", :back,class: "btn btn-large btn-primary"%>
-		<%end%>
+  <%if user_signed_in? and current_user.id==@post.user_id %>
+  <%=link_to "Edit Post", edit_topic_post_path(@topic,@post),class: "btn btn-large btn-primary"%>
+  <%=link_to "Back", :back,class: "btn btn-large btn-primary"%>
+  <%end%>
 
-        </div>
+</div>

@@ -1,61 +1,56 @@
 <body id="home">
-<div class='container'>
-<div class="jumbotron">
-    <h1 id="welcome">Welcome to the RailsForum!!!</h1>
-    <h2>
-      This is the RailsForum. Browse our Posts and Topics or sign in to create your own...
-    </h2>    
+  <div class='container'>
+    <div class="jumbotron">
+      <h1 id="welcome">Welcome to the RailsForum!!!</h1>
+      <h2>
+        This is the RailsForum. Browse our Posts and Topics or sign in to create your own...
+      </h2>    
+    </div>
   </div>
-</div>
-<div class='container' id="home_upper_container">
-	<div class="navbar-text pull-right">
-	<% if user_signed_in? %>
-	  <div id="label">Logged in as <strong ><%= current_user.email %></strong>.</div>
-	  <%= link_to 'Edit profile', edit_user_registration_path,class: 'btn btn-lg btn-primary' %> 
-	  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-lg btn-primary'    %>
+  <div class='container' id="home_upper_container">
+    <div class="navbar-text pull-right">
+	  <% if user_signed_in? %>
+	    <div id="label">Logged in as <strong ><%= current_user.email %></strong>.</div>
+	    <%= link_to 'Edit profile', edit_user_registration_path,class: 'btn btn-lg btn-primary' %> 
+	    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-lg btn-primary'    %>
 	  
 
-	<% else %>
-	<div class="row">	
-	  <%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
-	  <%= link_to "Show users", users_path, class: 'btn btn-primary' %>
-	</div>
-	<div class="row">	
-		<p id="label">New to RailsForum? Create Your Account</p>
+      <% else %>
+	  <div class="row">	
+	    <%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
+	    <%= link_to "Show users", users_path, class: 'btn btn-primary' %>
+	  </div>
+	  <div class="row">	
+	    <p id="label">New to RailsForum? Create Your Account</p>
 		<%=link_to "Signup",new_user_registration_path, class: 'btn btn-lg btn-primary'%>
-	</div>
-	<% end %>
-</div>
-</div>
+	  </div>
+	  <% end %>
+    </div>
+  </div>
 
-<div class="container">
+  <div class="container">
 	<div class="row">
-		<div class="col-md-6">
-			<div class="panel panel-default" id="posts_panel">
-				<div class="panel-heading">
-				<h2>Latest Posts</h2>
-				</div>
+	  <div class="col-md-6">
+	    <div class="panel panel-default" id="posts_panel">
+		  <div class="panel-heading">
+		    <h2>Latest Posts</h2>
+		  </div>
+		  <div class="panel-body">
+		    <% @recentposts.each do |post|%>
+			  <div class="panel panel-default" id="nowrap">					 	
 				<div class="panel-body">
-					<% @recentposts.each do |post|%>
-					 <div class="panel panel-default" id="nowrap">
-					 	
-					 	<div class="panel-body">
-					 		<div id="labeltop"><%=link_to "Browse Topic",topic_path(post.topic_id)%></div>	 		
+				  <div id="labeltop"><%=link_to "Browse Topic",topic_path(post.topic_id)%></div>	 		
 
-					 		<div id="content"><%=post.content%></div>
+				  <div id="content"><%=post.content%></div>
 					 		
-					 		<div id="labeltop">created by <%=post.post_author%>  <%=time_ago_in_words(post.updated_at)%> ago</div>
+				  <div id="labeltop">created by <%=post.post_author%>  <%=time_ago_in_words(post.updated_at)%> ago</div>
 					 		
-					 	</div>
-
-					 	</div>
-					<%end%>
 				</div>
-			</div>
+		      </div>
+			<%end%>
+		  </div>
 		</div>
-		
+	  </div>		
 	</div>
-</div>
-
-
+  </div>
 </body>

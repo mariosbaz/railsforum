@@ -1,13 +1,12 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
- 
-    <div class="container-fluid">
-      <div class="navbar-header">
-             <div id="logo"> <!--<img src="assets/logo.jpg"/>-->
-              <%= link_to "railsforum", root_path%></div>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div id="logo"> <!--<img src="assets/logo.jpg"/>-->
+        <%= link_to "railsforum", root_path%></div>
       </div>
       <div class="navbar-collapse collapse">
 
-        <% if user_signed_in? %>
+      <% if user_signed_in? %>
 
         <ul class="nav navbar-nav">  
           <li><%=link_to "Users", users_path%></li>
@@ -17,15 +16,15 @@
           <li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdown"><%=current_user.email.split('@')[0]%> 
                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Profile",current_user%></li>
-                <li class="divider"></li>
-                <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
-                <li><%= link_to 'Edit profile', edit_user_registration_path%></li>    
-              </ul>   
-            </li>
-          </ul>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile",current_user%></li>
+              <li class="divider"></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
+              <li><%= link_to 'Edit profile', edit_user_registration_path%></li>    
+            </ul>   
+          </li>
+        </ul>
 
         <% else %>
         

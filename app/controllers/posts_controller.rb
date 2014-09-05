@@ -18,53 +18,53 @@ class PostsController < ApplicationController
 		@post=Post.find(params[:id])
 	end
   
-  	def create
-  		@topic=Topic.find(params[:topic_id])
-  		@post=Post.new
-  		@post=current_user.posts.build(post_params)
-  		@post.topic_id=@topic.id
-      @post.post_author=User.find_by_id(@post.user_id).email
+  def create
+    @topic=Topic.find(params[:topic_id])
+  	@post=Post.new
+  	@post=current_user.posts.build(post_params)
+  	@post.topic_id=@topic.id
+    @post.post_author=User.find_by_id(@post.user_id).email
 
-      respond_to do |format|
-        if @post.save
-          format.html { render 'show', notice: 'Post was successfully created.' }
-          format.json
-          format.js
-        else
-          format.html { render 'show' }
-        end
+    respond_to do |format|
+      if @post.save
+        format.html { render 'show', notice: 'Post was successfully created.' }
+        format.json
+        format.js
+      else
+        format.html { render 'show' }
+      end
     end  			
   		
-    end
+  end
 
-    def edit
-    	 @topic=Topic.find(params[:topic_id])
-    	 @post=Post.find(params[:id])    
-    end
+  def edit
+    @topic=Topic.find(params[:topic_id])
+    @post=Post.find(params[:id])    
+  end
 
-    def update
-        @topic=Topic.find(params[:topic_id])
-        @post=Post.find(params[:id])
-        if @post.update_attributes(post_params)
-        	flash[:success]="Post updated"
-        	render 'show'
-        else
-        	render 'edit'
-        end
+  def update
+    @topic=Topic.find(params[:topic_id])
+    @post=Post.find(params[:id])
+    if @post.update_attributes(post_params)
+      flash[:success]="Post updated"
+      render 'show'
+    else
+      render 'edit'
     end
+  end
 
-	  def destroy
-  		@topic=Topic.find(params[:topic_id])
-      @post=Post.find(params[:id])
-      respond_to do |format|
-        if @post.destroy
-          format.html {redirect_to @topic, notice: 'Post was successfully deleted.' }
-          format.js
-        else
-          format.html { render action: 'new' }
-        end
+	def destroy
+    @topic=Topic.find(params[:topic_id])
+    @post=Post.find(params[:id])
+    respond_to do |format|
+      if @post.destroy
+        format.html {redirect_to @topic, notice: 'Post was successfully deleted.' }
+        format.js
+      else
+        format.html { render action: 'new' }
+      end
     end     
-	  end
+	end
 
   private
 
