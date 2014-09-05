@@ -1,24 +1,14 @@
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="col-md-4 offset4">
-			<h1 id="header"><%= @topic.name %> </h1> 	
-		</div>    
-	</div>
-</div>
-
-
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				<h2><%= @topic.name %> Posts</h2>
+				<h2><%= @topic.name %> Posts (<%=@topic.posts.count%>)</h2>
 				</div>
 
 				<div class="panel-body" >
-					<%if @topic.posts.any?%>
 					<div class="container" id="ajax_posts_show">
+					<%if @topic.posts.any?%>
 					<%=render @posts%>	
 				    </div>
 					<%end%>
@@ -27,27 +17,35 @@
 		</div>
 	</div>
 </div>
-</div>
 
 
 <%if user_signed_in?%>
 <div class="container-fluid">
-<div class="row-fluid">
-<div class='border-form-div'>
-		<%=form_for([@topic,Post.new], remote: true) do |f|%>
-		<p >
-			<%=f.label :content, "New Post"%></br>
-			<%=f.text_area :content%>
-		</p>
-		<p><%=f.submit "Add Post", class: "btn btn-lg btn-primary"%><%= link_to "Back", :back, class: "btn btn-lg btn-primary" %></p>
+	<div class="row-fluid">
+		<div class='border-form-div'>
+			<%=form_for([@topic,Post.new], remote: true) do |f|%>
+			<p>
+				<%=f.label :content, "New Post"%></br>
+				<%=f.text_area :content%>
+			</p>
+			<p><%=f.submit "Add Post", class: "btn btn-lg btn-primary"%><%= link_to "Back", :back, class: "btn btn-lg btn-primary" %></p>
 
-		<%end%>
+			<%end%>
+		</div>
+	</div>
 </div>
-</div>
-</div>
-</div>
+<%else%>
+ <div class="row">	
+
+ 	 <p id="label">Login to create your post</p>
+	  <%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
+	  <%= link_to "Show users", users_path, class: 'btn btn-primary' %>
+	</div>
+	<div class="row">	
+		<p id="label">New to RailsForum? Create Your Account</p>
+		<%=link_to "Signup",new_user_registration_path, class: 'btn btn-lg btn-primary'%>
+	</div>
 <%end%>
 
-
-<%= will_paginate @posts%>
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 

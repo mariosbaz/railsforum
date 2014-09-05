@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
   def show
   	@user=User.find(params[:id])
-  	redirect_to users_path
+  	@mylatestposts=@user.posts.all(order:"created_at DESC", limit:10)
+
   end
-    
+
 end

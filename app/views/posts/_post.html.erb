@@ -2,23 +2,22 @@
 <%=div_for post do%>
 		<div class="container-fluid" id="posts_topic_show">
 		<div class="row" >
-			<div class="col-md-3" id="date">created <%=time_ago_in_words(post.created_at)%> ago</div>
+			<div class="col-md-3" id="labeltop">created <%=time_ago_in_words(post.created_at)%> ago</div>
 		</div>
         <div class="row">
 			<div class="col-md-8" id="post_content"><%= post.content %></div>
 		</div>
 		<div class="row">
-			<div class="col-md-3" id="author">by <%=post.post_author%></div>
+			<div class="col-md-3" id="labelbottom">by <%=post.post_author%></div>
 		</div>
 		<div class="row-fluid">
-			<div class="col-md-3" id="author">
+			<div class="col-md-3" id="labelbottom">
 				
 				<%if user_signed_in? and current_user.id==post.user_id  %>
 				<div class="btn-group">
-					  <button type="button" class="btn btn-default"><%=link_to "Delete",topic_post_path(@topic,post) , method: :delete, confirm: "Are You sure?"%></button>
-					  <button type="button" class="btn btn-default"> <%=link_to "Edit",edit_topic_post_path(@topic, post)%></button>
-				</div>         
-	            
+					  <%=link_to "Delete",topic_post_path(@topic,post) , method: :delete, confirm: "Are You sure?", class:"btn btn-default" %>
+					  <%=link_to "Edit",edit_topic_post_path(@topic, post),class: "btn btn-default"%>
+				</div>    	            
 	           
 	            <%end%>
 	        </div>

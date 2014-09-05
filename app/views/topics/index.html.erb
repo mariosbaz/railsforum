@@ -1,46 +1,38 @@
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="col-md-4 offset4">
-            <h1 id="header">All Topics </h1>    
-        </div>    
-    </div>
-</div>
-
-
-<%if @topics.any?%>
 
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="panel panel-default" id="posts_panel">
+            <div class="panel panel-default">
                 <div class="panel-heading">
-                <h2>All Topics</h2>
+                <h2>All Topics <span class="brand" >(<%=Topic.all.count%>)</span></h2>
                 </div>
                 <div class="panel-body" >
+                    <%if @topics.any?%>
+
                     <%@topics.each do |topic|%>
                     <div class="container" id="posts_topic_show">  
                     <div class="row">
-                        <div class="col-md-3" id="date">created <%=time_ago_in_words(topic.created_at)%> ago</div>
+                        <div class="col-md-3" id="labeltop"> Posts: <%=topic.posts.count%></div>
                     </div>
                     <div class="row">
                         <div class="col-md-8" id="post_content"><%=topic.name %></div>
                         </div>
                     <div class="row">
-                        <div class="col-md-3" id="author">by <%=topic.topic_author%></div>
+                        <div class="col-md-6" id="labelbottom">created <%=time_ago_in_words(topic.created_at)%> ago by <%=topic.topic_author%></div>
                     </div>
 
 
                     <div class="row-fluid">
-                        <div class="col-md-4" id="author">
+                        <div class="col-md-4" id="labelbottom">
                             <%if user_signed_in? and current_user.id==topic.user_id  %>
 
-                            <div class="btn-group" id="author">
-                                <button type="button" class="btn btn-default"><%=link_to "Delete",topic , method: :delete, confirm: "Are You sure?"%></button>
-                                 <button type="button" class="btn btn-default"> <%=link_to "Edit",edit_topic_path(topic)%></button>
-                                 <button type="button" class="btn btn-default"> <%=link_to "Show",topic_path(topic)%></button>
+                            <div class="btn-group" >
+                                <%=link_to "Delete",topic , method: :delete, confirm: "Are You sure?",class:"btn btn-default"%>
+                                 <%=link_to "Edit",edit_topic_path(topic),class:"btn btn-default"%>
+                                 <%=link_to "Show",topic_path(topic),class:"btn btn-default"%>
                             </div>
                             <%else%>
-                              <button type="button" class="btn btn-default"> <%=link_to "Show",topic_path(topic)%></button>
+                              <%=link_to "Show",topic_path(topic),class:"btn btn-default"%>
                             <%end%>
                         </div>
                 </div>
@@ -63,7 +55,7 @@
                         <div class="col-md-6" id="post_content"><%=link_to "#{newtopic.name}", topic_path(newtopic) %></div>
                         </div>
                     <div class="row">
-                        <div class="col-md-12" id="author">created <%=time_ago_in_words(newtopic.created_at)%> ago by <%=newtopic.topic_author%></div>
+                        <div class="col-md-12" id="labelbottom">created <%=time_ago_in_words(newtopic.created_at)%> ago by <%=newtopic.topic_author%></div>
                     </div>
                    
                 </div>
@@ -77,6 +69,23 @@
 
 <%end%>
 
+<% if user_signed_in?%>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class='border-form-div'>
+            <%= form_for([@topic,Topic.new], remote: false) do |f|%>
+            <%= render 'shared/error_messages', object: f.object %>
+            <p>
+                <%=f.label :name, "New Topic"%></br>
+                <%=f.text_area :name%>
+            </p>
+            <div><%= f.submit "Create", class: "btn btn-large btn-primary"%></div>
+            <%end%>
+        </div>
+    </div>
+</div>
+<% end %>
 
-<%= will_paginate %>
 
+
+<%= will_paginate @topics, renderer: BootstrapPagination::Rails %>

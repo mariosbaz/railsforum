@@ -58,7 +58,7 @@ class PostsController < ApplicationController
       @post=Post.find(params[:id])
       respond_to do |format|
         if @post.destroy
-          format.html { redirect_to @topic, notice: 'Post was successfully deleted.' }
+          format.html {redirect_to @topic, notice: 'Post was successfully deleted.' }
           format.js
         else
           format.html { render action: 'new' }

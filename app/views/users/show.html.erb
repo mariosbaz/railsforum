@@ -1,0 +1,71 @@
+<div class="row">
+	<div class="col-md-12">
+		<h2 id="header">Hey i am <%=@user.email%></h2>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<%if @user.posts.count>0 %>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2>My Latest Posts</h2>
+				</div>
+				<div class="panel-body">
+					<%@mylatestposts.each do |post|%>
+					 <div class="panel panel-default" id="nowrap">
+					 	
+					 	<div class="panel-body">
+					 		<div id="labeltop"><%=link_to "Browse Topic",topic_path(post.topic_id)%></div>	 		
+
+					 		<div id="content"><%=post.content%></div>
+					 		
+					 		<div id="labeltop">created  <%=time_ago_in_words(post.updated_at)%> ago</div>					 		
+					 	</div>
+
+					 	</div>
+					<%end%>
+				</div>
+			</div>
+			<%else%>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2>No posts at all</h2>
+				</div>
+			</div>
+			<%end%>
+
+		</div>
+		<div class="col-md-6">
+			<%if @user.topics.count>0 %>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2>My Topics</h2>
+				</div>
+				<div class="panel-body">
+					<%@user.topics.each do |topic|%>
+					 <div class="panel panel-default" id="nowrap">
+					 	
+					 	<div class="panel-body">
+					 		<div id="labeltop"><%=link_to "Browse Topic",topic_path(topic)%></div>	 		
+
+					 		<div id="content"><%=topic.name%></div>
+					 		
+					 		<div id="labeltop">created  <%=time_ago_in_words(topic.updated_at)%> ago</div>					 		
+					 	</div>
+
+					 	</div>
+					<%end%>
+
+				</div>
+			</div>
+			<%else%>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2>No Topics created</h2>
+				</div>
+			</div>
+			<%end%>
+		</div>
+
