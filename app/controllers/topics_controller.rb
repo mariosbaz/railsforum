@@ -7,7 +7,8 @@ class TopicsController < ApplicationController
 
   def index
     @topics=Topic.paginate(page: params[:page],:order => 'created_at DESC')
-    @newtopics=Topic.all(order: "created_at DESC", limit: 5)
+    @newtopics=Topic.all(order: "created_at DESC", limit: 5)   
+
   end
 
   def create
@@ -56,6 +57,6 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:name)
-  end    
+  end     
 
 end

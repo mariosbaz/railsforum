@@ -43,7 +43,7 @@
 
 				  <div id="content"><%=post.content%></div>
 					 		
-				  <div id="labeltop">created by <%=post.post_author%>  <%=time_ago_in_words(post.updated_at)%> ago</div>
+				  <div id="labeltop">created by <%=post.user.email%>  <%=time_ago_in_words(post.updated_at)%> ago</div>
 					 		
 				</div>
 		      </div>

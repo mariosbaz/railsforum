@@ -23,7 +23,6 @@ class PostsController < ApplicationController
   	@post=Post.new
   	@post=current_user.posts.build(post_params)
   	@post.topic_id=@topic.id
-    @post.post_author=User.find_by_id(@post.user_id).email
 
     respond_to do |format|
       if @post.save

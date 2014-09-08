@@ -3,7 +3,8 @@
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				<h2><%= @topic.name %> Posts (<%=@topic.posts.count%>)</h2>
+				<h2 id="ajax_changed"><%= @topic.name %> Posts (<%=@topic.posts.count%>)</h2>
+				<h2><%= @topic.user.email%> </h2>
 				</div>
 
 				<div class="panel-body" >

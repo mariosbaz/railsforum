@@ -17,7 +17,7 @@
               <div class="col-md-8" id="post_content"><%=topic.name %></div>
             </div>
             <div class="row">
-              <div class="col-md-6" id="labelbottom">created <%=time_ago_in_words(topic.created_at)%> ago by <%=topic.topic_author%></div>
+              <div class="col-md-6" id="labelbottom">created <%=time_ago_in_words(topic.created_at)%> ago by <%= topic.user.email%></div>
             </div>
             <div class="row-fluid">
               <div class="col-md-4" id="labelbottom">
@@ -51,7 +51,7 @@
                 <div class="col-md-6" id="post_content"><%=link_to "#{newtopic.name}", topic_path(newtopic) %></div>
               </div>
               <div class="row">
-                <div class="col-md-12" id="labelbottom">created <%=time_ago_in_words(newtopic.created_at)%> ago by <%=newtopic.topic_author%></div>
+                <div class="col-md-12" id="labelbottom">created <%=time_ago_in_words(newtopic.created_at)%> ago by <%=newtopic.user.email%></div>
               </div>                   
             </div>
           <%end%>
