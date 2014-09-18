@@ -1,5 +1,6 @@
 
 var new_post=$("<%=escape_javascript(render(:partial => @post))%>").hide();
-$('#ajax_posts_show').append(new_post);
+$('#ajax_posts_show').prepend(new_post);
 $("#post_<%=@post.id%>").fadeIn("slow");
+$("#ajax_changed").
 $("#new_post")[0].reset();

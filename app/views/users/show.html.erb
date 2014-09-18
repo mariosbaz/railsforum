@@ -1,6 +1,6 @@
 <div class="row">
-	<div class="col-md-12">
-		<h2 id="header">Hey i am <%=@user.email%></h2>
+	<div class="col-md-12" id="user_header">
+		Hey i am <%=cut_name(@user.email)%>
 	</div>
 </div>
 
@@ -14,17 +14,11 @@
 				</div>
 				<div class="panel-body">
 					<%@mylatestposts.each do |post|%>
-					 <div class="panel panel-default" id="nowrap">
-					 	
-					 	<div class="panel-body">
-					 		<div id="labeltop"><%=link_to "Browse Topic",topic_path(post.topic_id)%></div>	 		
-
-					 		<div id="content"><%=post.content%></div>
-					 		
-					 		<div id="labeltop">created  <%=time_ago_in_words(post.updated_at)%> ago</div>					 		
-					 	</div>
-
-					 	</div>
+					 <div class="container" id="posts_show">			 
+					 		<div id="labeltop"><%=link_to "Browse Topic",topic_path(post.topic_id)%></div>
+					 		<div id="content"><%=post.content%></div>					 		
+					 		<div id="labeltop">created  <%=time_ago_in_words(post.updated_at)%> ago </div>					 	
+					 </div>
 					<%end%>
 				</div>
 			</div>
@@ -45,15 +39,12 @@
 				</div>
 				<div class="panel-body">
 					<%@user.topics.each do |topic|%>
-					 <div class="panel panel-default" id="nowrap">
-					 	
-					 	<div class="panel-body">
+					 <div class="container" id="posts_show">		 	
 					 		<div id="labeltop"><%=link_to "Browse Topic",topic_path(topic)%></div>	 		
 
-					 		<div id="content"><%=topic.name%></div>
+					 		<div id="content"><%=link_to "#{topic.name}",topic_path(topic)%></div>
 					 		
 					 		<div id="labeltop">created  <%=time_ago_in_words(topic.updated_at)%> ago</div>					 		
-					 	</div>
 
 					 	</div>
 					<%end%>

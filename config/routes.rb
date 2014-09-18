@@ -4,9 +4,11 @@ Railsforum::Application.routes.draw do
   resources :users
   
   resources :topics do 
-    resources :posts
-  end
-  
+    resources :posts 
+  end  
+
+  resources :votes  
+
   root to: "static_pages#home"
 
   # The priority is based upon order of creation: first created -> highest priority.

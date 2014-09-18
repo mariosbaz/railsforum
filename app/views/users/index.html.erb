@@ -11,7 +11,7 @@
                 <div class="panel-body" >
                     <%@users.each do |user|%>
                     <div class="container" id="posts_topic_show">   
-                        <div class="col-md-9" id="user_index"> <%=link_to "#{user.email}", user_path(user)%></div>
+                        <div class="col-md-9" id="user_index"> <%=link_to "#{cut_name(user.email)}", user_path(user)%></div>
 
                         <div class="col-md-3" id="badge"><span class="badge"><%=user.posts.count %></span></div>
                     </div>
@@ -33,7 +33,7 @@
                     <%@newusers.each do |user|%>
                     <div class="container" id="posts_topic_show">  
                     
-                        <div class="col-md-9" id="user_index"><%=user.email %></div>
+                        <div class="col-md-9" id="user_index"><%=link_to "#{cut_name(user.email)}", user_path(user)%></div>
                         <div class="col-md-3" id="badge"><span class="badge"><%=user.posts.count %></span></div>
                     </div>
                     <%end%>

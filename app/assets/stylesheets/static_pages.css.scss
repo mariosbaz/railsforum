@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 
@@ -11,16 +12,36 @@
 /*body css */
 
 body {
-  padding-top:100px;
-  background-size: 2000px 960px;
-  /*background-image: url("background.jpg"); */
+  padding-top: 100px;
   color: #000;
   margin:0 auto;
-  background-color:rgb(87, 140, 219);
-  margin-top:-35px;
+  background: linear-gradient(to  bottom , #D9D9EE, white , #D9D9EE);
+
+  margin-top:0;
   text-align: center;
-  margin-left:20x;
- ;  
+  margin-left:20x; 
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  color:#000;
+  margin-bottom: 10px;
+}
+
+
+html {
+  overflow-y: scroll;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {  
+  resize: vertical;
 }
 
 /*css for some headers*/
@@ -34,60 +55,56 @@ body {
 /*css for the header*/
 
 #logo {
-		letter-spacing: +1px;
-    text-transform: uppercase;
-		font-weight: bold;
     text-align:left;
 		font-size: 1.5em;
-		margin-left:100px;    
-    color:gray;
-    width:80%;
+		margin-left:80px; 
+    padding-top: 0;
+    padding-bottom: 5px;
     }
 
 #logo:hover {	
 	text-decoration:underline;
 }
-
+#nowrap{
+  background-color:white;
+}
 #dropdown {
   text-transform: uppercase;
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .navbar-header{
   margin-left:-15px;
   margin-top:10px;
-  margin-bottom:10px;  
+  margin-bottom:0;  
 }
 
 .navbar-fixed-top{
     border-bottom: 4px solid rgb(10, 75, 95);
 }
 
+.navbar-default .navbar-nav > li > a {
+  color: black;
+}
+
 .navbar-nav.navbar-right:last-child{
   margin-right:80px;
 }
+ .navbar-nav > li > a {
+    padding-top: 25px;
+    padding-bottom: 15px;
+  }
 
 .navbar-inner {
-margin-left:10px;
-	padding-top:12px;
-	padding-bottom:7px;
+  margin-left:10px;
+	padding-top:20px;
+	padding-bottom:0px;
 	margin-right:-40px;
 }
 
-/*styling center hero unit*/
-
-#center_unit {
-	margin-top:20px;
-	margin-left:0;
-	margin-right:-10px; 
-  font-style: italic;
-  font-family:arial;
-}
-
-#label { 
-  color:black;
-  margin-bottom:10px;
-  margin-top:10px;
+.navbar-default {
+  background-color: #FFFDFD;
+  border-color: black;
 }
 
 a:link { 
@@ -111,7 +128,8 @@ section {
   margin: 0 auto 20px;
   margin-top:20px;
   background-color: #F0F8FF;
-  border: 1px solid #e5e5e5;  
+  border: 2px solid black;
+
 }
 
 .border-form-div {
@@ -120,7 +138,9 @@ section {
   margin: 0 auto 20px;
   margin-top:20px;
   background-color: #F0F8FF;
-  border: 1px solid #e5e5e5;
+  border: 2px solid black;
+      box-shadow: 10px 10px 5px #888888;
+
 }
 
 .border-form-div .form-signin-heading,
@@ -140,7 +160,7 @@ section {
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 18px;
 }
 
@@ -189,6 +209,12 @@ pre {
     @include box_sizing;
 } 
 
+.alert {
+margin-top:-50px;
+padding: 20px;
+margin-bottom: 20px;
+}
+
 /*some styling for the posts*/
 
 #post_content {
@@ -205,19 +231,6 @@ pre {
   margin-bottom:15px;
 }
 
-#home_upper_container{
-  border-bottom:1px solid black;
-  margin-bottom:20px;
-}
-
-#home_down_left_container{
-  background-color:red;
-  width:40%;
-  overflow:auto;
-  float:left;
-  margin-left:50px;
-}
-
 /*helping labels*/
 
 #labeltop{
@@ -228,10 +241,39 @@ pre {
 }
 
 #labelbottom{
-  font-size:10px;
+  font-size:12px;
   float:right;
   color:gray;
   text-align:right;
+}
+
+
+#labelright{
+  float:right;
+  text-align:right;
+}
+
+#labelscore{
+  font-size:20px;
+  float:right;
+  color:black;
+  font-family: sans-serif;
+}
+
+#score_container{
+  font-family:arial;
+  border-radius:15px;
+  float:right;
+  text-align:right;
+  margin:auto;
+  @include box_sizing; 
+  .btn-default{
+  background: linear-gradient(to bottom, rgb(199, 162, 162), white);
+  }
+ }
+
+#buttonright{
+  float:center;
 }
 
 #content {
@@ -244,8 +286,20 @@ pre {
 #posts_topic_show{
   border-radius:15px;
   margin-top:10px;
-  margin-borrom:10px;
   width:100%;
+  float:left;
+  height:100%;
+  background-color:#F0F8FF;
+  border: 1px solid gray;
+  word-wrap: break-word;
+ }
+
+#posts_show{
+  border-radius:15px;
+  margin-top:auto;
+  margin-top:15px;
+  width:100%;
+  float:left;
   height:100%;
   background-color:#F0F8FF;
   border: 1px solid gray;
@@ -254,12 +308,27 @@ pre {
 
 #ajax_posts_show{
   margin-top:10px;
-  margin-borrom:10px;
   width:100%;
   height:100%;
   word-wrap: break-word;
 }
 
+#posts_panel{
+  margin-top:70px;
+}
+#vote_show{
+  float:right;
+  height:100%;
+  width:95%; 
+  height:37px;
+}
+
+#vote {
+ font-size: 20px;
+ float:left;
+  font-weight: bold;
+
+}
 #badge{
   text-align:right;
 }
@@ -271,5 +340,129 @@ pre {
 /*change panel header background color*/
 
 .panel-default > .panel-heading{
-  background-color:rgb(234, 244, 246);
+     background: linear-gradient(to bottom, #CACAE2, white); 
+    border-bottom: 1px solid black; 
+}
+
+.panel {
+  background-color: #CACAE2;
+  border: 2px solid black;
+  box-shadow: 10px 10px 5px #888888;
+
+}
+
+#nowrap{
+    word-wrap: break-word;
+}
+
+#railsforum-hero-container{
+
+  margin-top:-40px;
+  overflow:auto;
+  #hero_row{
+  #hero_header {  
+  font: 600 5em Philosopher,Fantasy,Helvetica,Verdana,Arial;
+  font-style:italic;
+  margin-bottom:20px;
+  margin-top:60px;
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
+  color: #3f3f3f;
+}
+  
+  h2{
+  font-size:40px;
+  font-family:Satisfy,san-serif;
+  margin-top:60px;
+  font-style:italic;
+  }
+  border: 2px solid black;
+  background: linear-gradient(to bottom, white,#CACAE2 );
+
+}
+
+#hero_small_logged_in{
+  float:right;
+  margin-top:40px;
+  margin-bottom:40px;
+  padding-top:10px;
+  margin-right:15px;
+    background:linear-gradient(to bottom,white, #CACAE2 );
+
+  border: 2px solid black;
+  border-radius:15px;       
+   box-shadow: 10px 10px 5px #888888;
+
+  #label{
+  margin:auto;
+ padding:20px 20px 20px 20px;  }
+}
+
+ #hero_small_logged_out{
+  float:right;
+  margin-top:40px;
+  margin-bottom:40px;
+  padding-top:10px;
+  background:linear-gradient(to bottom, #CACAE2, white);
+  border: 2px solid black;
+  border-radius:15px; 
+        box-shadow: 10px 10px 5px #888888;
+
+  #label{
+  margin:auto;
+  padding:20px 20px 20px 20px;
+  }  
+
+ }
+}
+
+#user_header {
+  font-size:35px;
+  background-color:white;
+  border: 2px solid black;
+  border-radius:15px;
+  width:30%;
+  float:center;
+  margin:auto;
+  margin-bottom:20px;
+}
+
+ 
+  
+#score_value_container{
+  #positive_score{
+  background: linear-gradient(to bottom, green, white);
+  border: 1px solid black;
+  border-radius:15px;
+  }
+
+  #negative_score{
+    background: linear-gradient(to bottom, red, white);
+    border: 2px solid black;
+    border-radius:15px;
+  }
+
+  #zero_score{
+    background-color:white;
+    border: 2px solid black;
+    border-radius:15px;
+  }
+}
+
+#unvote{
+  .btn-default{  
+     background: linear-gradient(to right, #CACAE2, white); 
+}
+}
+
+
+#unvote{
+  .btn-default{  
+     background: linear-gradient(to right, #CACAE2, white); 
+}
+}
+
+#edit_delete{
+  .btn-default{  
+     background: linear-gradient(to bottom, #CACAE2, white);
+}
 }

@@ -1,8 +1,9 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <div id="logo"> <!--<img src="assets/logo.jpg"/>-->
-        <%= link_to "railsforum", root_path%></div>
+      <div id="logo"> 
+        <%= link_to image_tag("logo.jpg", alt: "RailsForum"), root_path%>
+      </div>
       </div>
       <div class="navbar-collapse collapse">
 
@@ -14,7 +15,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right" id="navbar_right">  
           <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdown"><%=current_user.email.split('@')[0]%> 
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdown"><%=cut_name(current_user.email)%> 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">

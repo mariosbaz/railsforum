@@ -12,9 +12,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic=Topic.new(topic_params)
-    @topic.user_id=current_user.id
-    @topic.topic_author=User.find_by_id(@topic.user_id).email
+    @topic=current_user.topics.build(topic_params)
     
     if @topic.save
        redirect_to @topic
@@ -35,6 +33,7 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])   
+    
     if @topic.user_id ==current_user.id
       if @topic.update_attributes(topic_params)
         @topic.user_id=current_user.id
@@ -51,6 +50,7 @@ class TopicsController < ApplicationController
   def show
     @topic=Topic.find(params[:id])
     @posts=@topic.posts.paginate(page: params[:page],:order => 'created_at DESC')
+    @vote=Vote.new
   end 
 
   private

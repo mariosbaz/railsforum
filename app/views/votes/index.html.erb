@@ -1,0 +1,9 @@
+<h1>Votes#index</h1>
+<p>Find me in app/views/votes/index.html.erb</p>
+<div>
+	<%@votes.each do |vote|%>
+		<%=vote.vote_up%>
+	<%end%>	
+</div>
+
+<%= debug params %>

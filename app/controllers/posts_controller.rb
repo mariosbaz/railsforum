@@ -3,26 +3,32 @@ class PostsController < ApplicationController
 
 	def index
 		@topic=Topic.find(params[:topic_id])
+    @vote=Vote.new
     redirect_to topic_url(@topic.id)
-
 	end
 
 	def new
 		@topic=Topic.find(params[:topic_id])
 		@post=Post.new
-    
+    @vote=Vote.new
+
 	end
 
 	def show
 		@topic=Topic.find(params[:topic_id])
 		@post=Post.find(params[:id])
+    @vote=Vote.new
+    redirect_to @topic
 	end
   
   def create
     @topic=Topic.find(params[:topic_id])
-  	@post=Post.new
+    @post=Post.new
+
   	@post=current_user.posts.build(post_params)
   	@post.topic_id=@topic.id
+    @post.score=0
+    @vote=Vote.new
 
     respond_to do |format|
       if @post.save
@@ -44,9 +50,11 @@ class PostsController < ApplicationController
   def update
     @topic=Topic.find(params[:topic_id])
     @post=Post.find(params[:id])
+        @vote= Vote.find(params[:id])
+
     if @post.update_attributes(post_params)
       flash[:success]="Post updated"
-      render 'show'
+      redirect_to topic_post_path(@topic,@post)
     else
       render 'edit'
     end
@@ -65,13 +73,11 @@ class PostsController < ApplicationController
     end     
 	end
 
+
   private
 
     def post_params
       params.require(:post).permit(:content)
-    end   
-
-    def find_topic_name
-      @topname=Topic.all.find_by_id(@post.topic_id).name      
-    end
+    end      
+        
 end

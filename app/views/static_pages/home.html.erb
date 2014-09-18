@@ -1,34 +1,41 @@
-<body id="home">
-  <div class='container'>
-    <div class="jumbotron">
-      <h1 id="welcome">Welcome to the RailsForum!!!</h1>
-      <h2>
-        This is the RailsForum. Browse our Posts and Topics or sign in to create your own...
-      </h2>    
-    </div>
-  </div>
-  <div class='container' id="home_upper_container">
-    <div class="navbar-text pull-right">
-	  <% if user_signed_in? %>
-	    <div id="label">Logged in as <strong ><%= current_user.email %></strong>.</div>
-	    <%= link_to 'Edit profile', edit_user_registration_path,class: 'btn btn-lg btn-primary' %> 
-	    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-lg btn-primary'    %>
-	  
+<link href="http://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet" />
+<link href="http://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" />
 
-      <% else %>
-	  <div class="row">	
-	    <%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
-	    <%= link_to "Show users", users_path, class: 'btn btn-primary' %>
-	  </div>
-	  <div class="row">	
-	    <p id="label">New to RailsForum? Create Your Account</p>
+<div id="home">
+ <div class="jumbotron-fluid" id="railsforum-hero-container">
+ 	
+   <div class="row-fluid" id="hero_row">
+     <div id="hero_header" >Welcome to the RailsForum!!!</div>
+  	 <h2>Browse our Posts and Topics or sign in to create your own...<h2>
+  	 <a href="#home_down_container" class="btn btn-default btn-lg" id="arrow_down">
+  	 <span class="glyphicon glyphicon-chevron-down"></span> 
+     </a>
+   </div>
+   <% if user_signed_in? %>
+   <div class="row-fluid" id="hero_small_logged_in">
+     <div id="label">Logged in as <strong ><%= cut_name(current_user.email) %></strong></div>
+	 <div id="label">
+	   <%= link_to 'Edit profile', edit_user_registration_path,class: 'btn btn-lg btn-primary' %> 
+	   <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-lg btn-primary'    %>  
+     </div>
+   </div>
+   <% else %>
+   <dic class="container-fluid" id="hero_small_logged_out" >
+     <div class="row-fluid" >	
+	   <div id="label">
+	   <%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
+	   <%= link_to "Show users", users_path, class: 'btn btn-primary' %>
+	   </div>
+	 </div>
+	 <div class="row-fluid" id="label">	
+	    <h5>New to RailsForum? Create Your Account</h5>
 		<%=link_to "Signup",new_user_registration_path, class: 'btn btn-lg btn-primary'%>
-	  </div>
-	  <% end %>
-    </div>
-  </div>
+	 </div>
+	</div>
+	<% end %>
+ </div>  
 
-  <div class="container">
+  <div class="container" id="home_down_container">
 	<div class="row">
 	  <div class="col-md-6">
 	    <div class="panel panel-default" id="posts_panel">
@@ -37,15 +44,13 @@
 		  </div>
 		  <div class="panel-body">
 		    <% @recentposts.each do |post|%>
-			  <div class="panel panel-default" id="nowrap">					 	
-				<div class="panel-body">
-				  <div id="labeltop"><%=link_to "Browse Topic",topic_path(post.topic_id)%></div>	 		
+			  <div class="container" id="posts_show">				 	
+				  <div id="labeltop"><%=link_to "Browse #{post.topic.name}",topic_path(post.topic_id)%></div>	 		
 
 				  <div id="content"><%=post.content%></div>
 					 		
-				  <div id="labeltop">created by <%=post.user.email%>  <%=time_ago_in_words(post.updated_at)%> ago</div>
+				  <div id="labeltop">created by <%=cut_name(post.user.email)%>... <%=time_ago_in_words(post.updated_at)%> ago</div>
 					 		
-				</div>
 		      </div>
 			<%end%>
 		  </div>
@@ -53,4 +58,5 @@
 	  </div>		
 	</div>
   </div>
-</body>
+  </div>
+
