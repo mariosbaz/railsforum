@@ -31,7 +31,7 @@
       <%if user_signed_in?%>
       <div class="btn-group col-md-2 pull-right">
       <div id="vote">
-	    <%=form_for Vote.new, remote: true do |f| %>
+	    <%=form_for Vote.new do |f| %>
 		<%= f.button :button do %> <i class="glyphicon glyphicon-thumbs-up"></i>
 		<%end%>
 		<%=f.hidden_field  :post_id ,value: post.id.to_i %>
@@ -39,7 +39,7 @@
 		<% end %>	
 		</div>		
       <div  id="vote">
-		<%=form_for Vote.new, remote: true do |f| %>
+		<%=form_for Vote.new do |f| %>
 		<%= f.button :button do %> <i class="glyphicon glyphicon-thumbs-down"></i>
 		<% end %>
 		<%=f.hidden_field  :post_id ,value: post.id.to_i %>

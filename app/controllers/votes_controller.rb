@@ -20,7 +20,7 @@ class VotesController < ApplicationController
           @post.score=@post.score-1          
         end
         @post.save
-      redirect_to topic_path(@topic)
+        redirect_to topic_path(@topic)
       else
         render 'new'
       end
