@@ -97,17 +97,14 @@ section {
   overflow:auto;
   #hero_row{
   #hero_header {  
-  font: 600 5em Tangerine,Philosopher,Fantasy,Helvetica,Verdana,Arial;
+  font: 80px Tangerine,Philosopher,Fantasy,Helvetica,Verdana,Arial;
   font-style:italic;
-  margin-bottom:20px;
   margin-top:60px;
-  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
   color: #3f3f3f;
   }  
   h2{
-  font-size:40px;
-  font-family:Satisfy,san-serif;
-  margin-top:60px;
+  font: 60px Tangerine,Satisfy,san-serif,arial;
+  margin-top:40px;
   font-style:italic;
   }
   border: 2px solid black;
