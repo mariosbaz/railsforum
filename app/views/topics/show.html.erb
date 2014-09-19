@@ -1,3 +1,4 @@
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
@@ -8,7 +9,7 @@
 				</div>
 
 				<div class="panel-body" >
-					<div class="container" id="ajax_posts_show">
+					<div class="container-fluid" id="ajax_posts_show">
 					<%if @topic.posts.any?%>
 					<%=render @posts%>	
 				    </div>
@@ -17,7 +18,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 
 <%if user_signed_in?%>
 <div class="container-fluid">
@@ -35,17 +35,18 @@
 	</div>
 </div>
 <%else%>
- <div class="row">	
-
- 	 <p id="label">Login to create your post</p>
-	  <%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
-	  <%= link_to "Show users", users_path, class: 'btn btn-primary' %>
-	</div>
-	<div class="row">	
-		<p id="label">New to RailsForum? Create Your Account</p>
-		<%=link_to "Signup",new_user_registration_path, class: 'btn btn-lg btn-primary'%>
-	</div>
+<div class="container-fluid" id="small_logged_out">
+  <div id="label_log_out" >	
+ 	Login to create your post</br>
+	<%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
+	<%= link_to "Show users", users_path, class: 'btn btn-primary' %>
+  </div>
+  <div  id="label_log_out" >	
+    New to RailsForum? Create Your Account</br>
+	<%=link_to "Signup",new_user_registration_path, class: 'btn btn-lg btn-primary'%>
+  </div>
 <%end%>
+</div>
 
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 

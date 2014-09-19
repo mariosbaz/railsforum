@@ -10,26 +10,20 @@ class PostsController < ApplicationController
 	def new
 		@topic=Topic.find(params[:topic_id])
 		@post=Post.new
-    @vote=Vote.new
-
 	end
 
 	def show
 		@topic=Topic.find(params[:topic_id])
 		@post=Post.find(params[:id])
-    @vote=Vote.new
     redirect_to @topic
 	end
   
   def create
     @topic=Topic.find(params[:topic_id])
-    @post=Post.new
-
   	@post=current_user.posts.build(post_params)
   	@post.topic_id=@topic.id
     @post.score=0
     @vote=Vote.new
-
     respond_to do |format|
       if @post.save
         format.html { render 'show', notice: 'Post was successfully created.' }
@@ -50,8 +44,6 @@ class PostsController < ApplicationController
   def update
     @topic=Topic.find(params[:topic_id])
     @post=Post.find(params[:id])
-        @vote= Vote.find(params[:id])
-
     if @post.update_attributes(post_params)
       flash[:success]="Post updated"
       redirect_to topic_post_path(@topic,@post)

@@ -1,6 +1,4 @@
-<link href="http://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet" />
-<link href="http://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" />
-
+<link href="http://fonts.googleapis.com/css?family=Philosopher|Satisfy|Tangerine" rel="stylesheet" />
 <div id="home">
  <div class="jumbotron-fluid" id="railsforum-hero-container">
  	
@@ -12,22 +10,21 @@
      </a>
    </div>
    <% if user_signed_in? %>
-   <div class="row-fluid" id="hero_small_logged_in">
-     <div id="label">Logged in as <strong ><%= cut_name(current_user.email) %></strong></div>
-	 <div id="label">
+   <div class="row-fluid" id="small_logged_in">
+     <div id="label_log_in">Logged in as <strong ><%= cut_name(current_user.email) %></strong></div>
+	 <div id="label_log_in">
 	   <%= link_to 'Edit profile', edit_user_registration_path,class: 'btn btn-lg btn-primary' %> 
 	   <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-lg btn-primary'    %>  
      </div>
    </div>
    <% else %>
-   <dic class="container-fluid" id="hero_small_logged_out" >
-     <div class="row-fluid" >	
-	   <div id="label">
+   <dic class="container-fluid" id="small_logged_out" >
+     <div class="row-fluid" id="label_log_out">		   
 	   <%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
+
 	   <%= link_to "Show users", users_path, class: 'btn btn-primary' %>
-	   </div>
 	 </div>
-	 <div class="row-fluid" id="label">	
+	 <div class="row-fluid" id="label_log_out">	
 	    <h5>New to RailsForum? Create Your Account</h5>
 		<%=link_to "Signup",new_user_registration_path, class: 'btn btn-lg btn-primary'%>
 	 </div>
@@ -45,11 +42,10 @@
 		  <div class="panel-body">
 		    <% @recentposts.each do |post|%>
 			  <div class="container" id="posts_show">				 	
-				  <div id="labeltop"><%=link_to "Browse #{post.topic.name}",topic_path(post.topic_id)%></div>	 		
+				  <div id="label"><%=link_to "Browse #{post.topic.name}",topic_path(post.topic_id)%></div>		
 
-				  <div id="content"><%=post.content%></div>
-					 		
-				  <div id="labeltop">created by <%=cut_name(post.user.email)%>... <%=time_ago_in_words(post.updated_at)%> ago</div>
+				  <div id="content"><%=post.content%></div>			 		
+				  <div id="label">created by <%=cut_name(post.user.email)%>... <%=time_ago_in_words(post.updated_at)%> ago</div>
 					 		
 		      </div>
 			<%end%>

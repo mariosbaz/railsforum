@@ -1,11 +1,6 @@
 class VotesController < ApplicationController
-  def new
-    @post=Post.find(params[:post_id])
-  	@vote=Vote.new
-  end
-
-  def create
-    
+  
+  def create    
     @post=Post.find_by(:id =>votes_params[:post_id])
     @topic=Topic.find_by(id:@post.topic_id)
     if @post.score==nil 
@@ -30,11 +25,7 @@ class VotesController < ApplicationController
         render 'new'
       end
     end    
-  end
-
-  def index
-    @votes=Vote.all
-  end
+  end  
 
   def destroy  
 
@@ -52,9 +43,7 @@ class VotesController < ApplicationController
     @vote.destroy
     redirect_to topic_path(@topic)
     flash[:notice]= "Now you can Vote again"
-  end
-  def show
-  end
+  end 
 
   private
   def votes_params

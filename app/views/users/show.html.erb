@@ -14,13 +14,24 @@
 				</div>
 				<div class="panel-body">
 					<%@mylatestposts.each do |post|%>
-					 <div class="container" id="posts_show">			 
-					 		<div id="labeltop"><%=link_to "Browse Topic",topic_path(post.topic_id)%></div>
+					  <div class="container" id="posts_show">		 
+					 		<div id="label"><%=link_to "Browse Topic",topic_path(post.topic_id)%></div>
 					 		<div id="content"><%=post.content%></div>					 		
-					 		<div id="labeltop">created  <%=time_ago_in_words(post.updated_at)%> ago </div>					 	
-					 </div>
+					 		<div id="label">created  <%=time_ago_in_words(post.updated_at)%> ago </div>
+					 		<div class="row-fluid">
+	              				<div class="col-md-12" id="label">
+		                			<%if user_signed_in? and current_user.id==post.user_id  %>
+
+			                 			 <div id="edit_delete">
+			                    		<%=link_to "Delete",topic_post_path(post.topic,post),method: :delete, confirm: "Are You sure?",class:"btn  btn-default"%>
+			                    		<%=link_to "Edit",edit_topic_post_path(post.topic, post),class:"btn btn-default"%>                    
+			                  			</div>                 
+		                  			<%end%>
+	              				</div>
+	              			</div>
+            		  </div>
 					<%end%>
-				</div>
+				</div>					
 			</div>
 			<%else%>
 			<div class="panel panel-default">
@@ -39,17 +50,36 @@
 				</div>
 				<div class="panel-body">
 					<%@user.topics.each do |topic|%>
-					 <div class="container" id="posts_show">		 	
-					 		<div id="labeltop"><%=link_to "Browse Topic",topic_path(topic)%></div>	 		
+					 <div class="container-fluid" id="posts_show">		 	
+					 	<div class="row-fluid">
+					 		<div class="col-md-12" >
+
+					 		<div id="label"><%=link_to "Browse Topic",topic_path(topic)%></div>	 		
 
 					 		<div id="content"><%=link_to "#{topic.name}",topic_path(topic)%></div>
 					 		
-					 		<div id="labeltop">created  <%=time_ago_in_words(topic.updated_at)%> ago</div>					 		
+					 		<div id="label">created  <%=time_ago_in_words(topic.updated_at)%> ago</div>		
 
+					 	    </div>
 					 	</div>
-					<%end%>
+					 	 <div class="row-fluid">
+              <div class="col-md-12" id="label">
+                <%if user_signed_in? and current_user.id==topic.user_id  %>
 
-				</div>
+                  <div class="btn-group" id="edit_delete">
+                    <%=link_to "Delete",topic , method: :delete, confirm: "Are You sure?",class:"btn  btn-default"%>
+                    <%=link_to "Edit",edit_topic_path(topic),class:"btn btn-default"%>                    
+                  </div>
+                 
+                  <%end%>
+              </div>
+            </div>
+					 	
+                    </div>
+                    <%end%>
+                </div>               
+
+
 			</div>
 			<%else%>
 			<div class="panel panel-default">
