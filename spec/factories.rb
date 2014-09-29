@@ -26,6 +26,7 @@ FactoryGirl.define do
     content { Faker::Lorem.paragraph }
     user
     topic
+    score "0"
 
     factory :invalid_post do
       content nil
@@ -33,13 +34,9 @@ FactoryGirl.define do
   end
 
   factory :vote do
-    vote_value "0"
+    vote_value "1"
     user
-    post
-
-    factory :valid_vote do
-      post_id "2"
-    end
+    post  
 
     factory :invalid_vote do
       vote_value nil
