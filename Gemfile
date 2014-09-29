@@ -33,6 +33,7 @@ group :production do
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
   gem 'rails_12factor', '0.0.2'
 end
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -47,14 +48,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+#gems for testing
+group :development, :test do 
+  gem 'rspec-rails', "~> 2.14.0"
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
+group :test do
+  gem 'selenium-webdriver', '2.35.1'
+  gem 'capybara', '~> 2.4.3'
+  gem 'factory_girl_rails', '4.2.0'
+  gem 'faker', '~> 1.1.2'
+end
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]

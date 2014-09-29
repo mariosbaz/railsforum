@@ -1,51 +1,43 @@
 class PostsController < ApplicationController
-	  before_action :authenticate_user!, :except=>[:show,:index]
+	before_action :authenticate_user!, :except=>[:show,:index]
+  before_action :parent_topic
 
-	def index
-		@topic=Topic.find(params[:topic_id])
-    @vote=Vote.new
-    redirect_to topic_url(@topic.id)
-	end
+  def new
+    @post = Post.new
+  end  
 
-	def new
-		@topic=Topic.find(params[:topic_id])
-		@post=Post.new
-	end
+  def index
+    redirect_to @topic
+  end
 
 	def show
-		@topic=Topic.find(params[:topic_id])
-		@post=Post.find(params[:id])
+		@post = Post.find(params[:id])
     redirect_to @topic
 	end
+
+  def edit
+    @post = Post.find(params[:id])    
+  end
   
   def create
-    @topic=Topic.find(params[:topic_id])
-  	@post=current_user.posts.build(post_params)
-  	@post.topic_id=@topic.id
-    @post.score=0
-    @vote=Vote.new
+  	@post = current_user.posts.build(post_params)
+  	@post.topic_id = @topic.id
+    @post.score = 0
     respond_to do |format|
       if @post.save
         format.html { render 'show', notice: 'Post was successfully created.' }
         format.json
-        format.js
+        format.js 
       else
-        format.html { render 'show' }
+        format.html { render 'show'}
       end
-    end  			
-  		
-  end
-
-  def edit
-    @topic=Topic.find(params[:topic_id])
-    @post=Post.find(params[:id])    
-  end
+    end  		
+  end  
 
   def update
-    @topic=Topic.find(params[:topic_id])
-    @post=Post.find(params[:id])
+    @post = Post.find(params[:id])
     if @post.update_attributes(post_params)
-      flash[:success]="Post updated"
+      flash[:success] = "Post updated"
       redirect_to topic_post_path(@topic,@post)
     else
       render 'edit'
@@ -53,18 +45,20 @@ class PostsController < ApplicationController
   end
 
 	def destroy
-    @topic=Topic.find(params[:topic_id])
-    @post=Post.find(params[:id])
-    respond_to do |format|
-      if @post.destroy
-        format.html {redirect_to @topic, notice: 'Post was successfully deleted.' }
-        format.js
-      else
-        format.html { render action: 'new' }
+    @post = Post.find(params[:id])
+    if @post.user_id == current_user.id
+      respond_to do |format|
+        if @post.destroy
+          format.html {redirect_to @topic, notice: 'Post was successfully deleted.' }
+          format.js
+        else
+          format.html { render action: 'new' }
+        end
       end
+    else 
+      redirect_to @topic
     end     
 	end
-
 
   private
 
@@ -72,4 +66,7 @@ class PostsController < ApplicationController
       params.require(:post).permit(:content)
     end      
         
+    def parent_topic
+      @topic = Topic.find(params[:topic_id])
+    end
 end
