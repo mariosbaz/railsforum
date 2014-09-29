@@ -51,6 +51,8 @@ end
 #gems for testing
 group :development, :test do 
   gem 'rspec-rails', "~> 2.14.0"
+  gem 'foreman'
+
 end
 
 group :test do
