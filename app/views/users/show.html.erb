@@ -1,6 +1,6 @@
 	<div class= "container col-md-12 col-sm-12 col-xs-12" id="profile_container"> 
 		<div class="row">
-		  <div class="col-md-4 col-sm-6 col-xs-8" id="avatar_medium">
+		  <div class="col-md-5 col-sm-6 col-xs-8" id="avatar_medium">
 				<div class="container-fluid" id="avatar_container">
 	            <%= image_tag @user.avatar.url(:medium) %>	
 	            </div>	  
@@ -33,6 +33,13 @@
 	        	<div class="row-fluid col-md-6 col-sm-6 col-xs-6">
 					<%=@user.posts.count%>		    
 				</div>
+			    <div class="row-fluid col-md-6 col-sm-6 col-xs-6">
+					Name:		    
+				</div>
+				<div class="row-fluid col-md-6 col-sm-6 col-xs-6">
+					<%=@user.name%>		    
+				</div>
+
 				<div class="row-fluid col-md-12 col-sm-12 col-xs-12" id="update">
 				  <% if user_signed_in? and current_user.id == @user.id%>
 			      <%= link_to 'Update profile', edit_user_registration_path%>

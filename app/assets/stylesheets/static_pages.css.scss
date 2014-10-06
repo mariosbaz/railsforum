@@ -370,8 +370,11 @@ pre {
     box-shadow: 8px 8px 5px black;
     border: 2px solid rgb(32, 23, 25);
     min-width:200px;
+    padding-bottom:20px;
+    margin-bottom:0;
+    overflow:hidden;    
+    font-style:bold;
     }
-
 .panel-body {
   background-color: rgb(233,234,237);
   border: 2px solid rgb(32, 23, 25);
@@ -379,13 +382,11 @@ pre {
   overflow:hidden;
   min-width:200px;
 
-
 }
 
 #posts_panel{
   margin-top:0;
 }
-
 
 #edit_delete{
 float:right;

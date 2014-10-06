@@ -4,7 +4,7 @@
       <div class="container col-md-2 col-sm-4 col-xs-4" id="post_container_left">
         <div class="row" id="avatar_small">    	
            <%= image_tag post.user.avatar.url(:small) %>  </div>
-        <div class="row" ><strong><%= cut_name(post.user.email) %></strong>
+        <div class="row" ><strong><%=link_to "#{cut_name(post.user.email)}", user_path(post.user)%></strong>
         </div>
         <div class="row">Posts: <%= post.user.posts.count %>
         </div>
@@ -31,7 +31,7 @@
 					<%elsif post.score<0 %>
 					<div  class='post-<%=post.id%>' id="negative_score"><%=post.score %></div>
 					<%else%>
-					  <div  class='post-<%=post.id%>' id="zero_score"><%=post.score %></div>	
+					  <div  class='post-<%=post.id%>' id="zero_score"><%=post.score %></div>
 					<%end%>
 				<%end%>	
 			</div>
