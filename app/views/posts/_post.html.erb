@@ -1,59 +1,67 @@
 <%=div_for post do%>
-  <div class="container-fluid" id="posts_show">
+  <div class="container" id="posts_show">
     <div class="row" >
-	  <div class="col-md-3" id="label">created <%=time_ago_in_words(post.created_at)%> ago by <%=cut_name(post.user.email)%></div>
-	  </div>
-    <div class="row">
-	  <div class="col-md-12 col-md-offset-1" id="content"><%= post.content %></div>
-	</div>
-	
-	<div class="row">
-		<div  class="col-md-1 col-md-offset-11" id="score_value_container">
-		<%if post.score != nil %>
-				<%if post.score>0 %> 
+      <div class="container col-md-2 col-sm-4 col-xs-4" id="post_container_left">
+        <div class="row" id="avatar_small">    	
+           <%= image_tag post.user.avatar.url(:small) %>  </div>
+        <div class="row" ><strong><%= cut_name(post.user.email) %></strong>
+        </div>
+        <div class="row">Posts: <%= post.user.posts.count %>
+        </div>
+      </div>
+       
+      <div class="container col-md-10 col-sm-10 col-xs-11" id="post_container_right">
+	  <div class="col-md-4 col-sm-12 col-xs-12" id="labelbig">created <%=time_ago_in_words(post.created_at)%> ago</div>
 
-				<div   class='post-<%=post.id%>' id="positive_score">+<%=post.score%></div>
-				<%elsif post.score<0 %>
-				<div  class='post-<%=post.id%>' id="negative_score"><%=post.score %></div>
-				<%else%>
-				  <div  class='post-<%=post.id%>' id="zero_score"><%=post.score %></div>	
-				<%end%>
-			<%end%>	
-		</div>
+	  <div class="row-fluid">
+		<div class="col-md-11 col-sm-12 col-xs-12" id="content"><%= post.content %></div>
+      </div>	 
 	</div>
+  </div>
   </div>
 <!--end of posts_show container-->
 
-<!--below post show container add buttons for voting and making actions funcitonality-->
+<!--below post show container add buttons for voting and making actions functionality-->
   <div class="container-fluid" >
     <div class="row" >   	
+      <div  class="col-md-1 col-sm-2 col-xs-2 pull-right" id="score_value_container">
+			<%if post.score != nil %>
+					<%if post.score>0 %> 
+					<div   class='post-<%=post.id%>' id="positive_score">+<%=post.score%></div>
+					<%elsif post.score<0 %>
+					<div  class='post-<%=post.id%>' id="negative_score"><%=post.score %></div>
+					<%else%>
+					  <div  class='post-<%=post.id%>' id="zero_score"><%=post.score %></div>	
+					<%end%>
+				<%end%>	
+			</div>
 
       <%if user_signed_in?%>
-      <div class="btn-group col-md-2 pull-right">
-      <div id="vote">
-	    <%=form_for Vote.new do |f| %>
-		<%= f.button :button do %> <i class="glyphicon glyphicon-thumbs-up"></i>
+      <div class="btn-group col-md-2 col-sm-8 col-xs-10 pull-right">
+	      <div id="vote">
+		    <%=form_for Vote.new do |f| %>
+			<%= f.button :button do %> <i class="glyphicon glyphicon-thumbs-up"></i>
+			<%end%>
+			<%=f.hidden_field  :post_id ,value: post.id.to_i %>
+			<%=f.hidden_field  :vote_value ,value: 1.to_i %>
+			<% end %>	
+			</div>		
+	      <div  id="vote">
+			<%=form_for Vote.new do |f| %>
+			<%= f.button :button do %> <i class="glyphicon glyphicon-thumbs-down"></i>
+			<% end %>
+			<%=f.hidden_field  :post_id ,value: post.id.to_i %>
+			<%=f.hidden_field  :vote_value ,value: 0.to_i %>
+			<% end %>     
+			</div>
+			</div>
+			<%if find_vote(post)%>	
+	        <div class="col-md-1 col-sm-2 col-xs-4 pull-right" id="unvote">
+				<%=link_to "Unvote",find_vote(post), method: :delete, confirm: "Are you Sure?", class:"btn btn-default"%>
+			</div>
 		<%end%>
-		<%=f.hidden_field  :post_id ,value: post.id.to_i %>
-		<%=f.hidden_field  :vote_value ,value: 1.to_i %>
-		<% end %>	
-		</div>		
-      <div  id="vote">
-		<%=form_for Vote.new do |f| %>
-		<%= f.button :button do %> <i class="glyphicon glyphicon-thumbs-down"></i>
-		<% end %>
-		<%=f.hidden_field  :post_id ,value: post.id.to_i %>
-		<%=f.hidden_field  :vote_value ,value: 0.to_i %>
-		<% end %>     
-		</div>
-		</div>
-		<%if find_vote(post)%>	
-        <div class="col-md-2 pull-right" id="unvote">
-			<%=link_to "Unvote",find_vote(post), method: :delete, confirm: "Are you Sure?", class:"btn btn-default"%>
-		</div>
-		<%end%>
-		<%if current_user.id==post.user_id%>
-		<div class="btn-group col-md-4 pull-left" id="edit_delete">
+		<% if current_user.id == post.user_id %>
+		<div class="btn-group col-md-4 col-sm-4 col-xs-4 pull-left" id="edit_delete">
            <%=link_to "Delete",topic_post_path(@topic,post), method: :delete, confirm: "Are You sure?", class:"btn btn-default", remote: true %>
               
            <%=link_to "Edit",edit_topic_post_path(@topic, post),class: "btn btn-default"%>

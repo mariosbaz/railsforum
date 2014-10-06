@@ -15,11 +15,12 @@
         </ul>
         <ul class="nav navbar-nav navbar-right" id="navbar_right">  
           <li id="fat-menu" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdown"><%=cut_name(current_user.email)%> 
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="dropdown">  <%= image_tag current_user.avatar.url(:mini) %>  <%=cut_name(current_user.email)%> 
                <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "Profile",current_user%></li>
+
               <li class="divider"></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
               <li><%= link_to 'Edit profile', edit_user_registration_path%></li>    

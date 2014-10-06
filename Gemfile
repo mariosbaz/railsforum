@@ -18,6 +18,8 @@ gem 'will_paginate-bootstrap', '~> 1.0.1'
 # Use for User authentication
 gem 'devise'
 
+# Paperclip fir orofile photos
+gem "paperclip", "~> 4.2"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -52,7 +54,6 @@ end
 group :development, :test do 
   gem 'rspec-rails', "~> 2.14.0"
   gem 'foreman'
-
 end
 
 group :test do
