@@ -1,45 +1,43 @@
 <div class="border-form-div">
-<h2>Edit Profile </h2>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :multipart => true  }) do |f| %>
-    <%= devise_error_messages! %>
-     <div><%= f.label :name %><br />
-      <%= f.text_field :name, autocomplete: "off" %></div>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+  <h2>Edit Profile </h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true, autocomplete: "off"  }) do |f| %>
+        <%= devise_error_messages! %>
+        <div><%= f.label :name %><br />
+          <%= f.text_field :name %></div>
+        <div><%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %></div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <%= f.radio_button(:gender, "male") %>
+        <%= f.label(:gender_male, "I am male") %>
+        <%= f.radio_button(:gender, "female") %>
+        <%= f.label(:gender_female, "I am female") %>    </br>
+      <div><%= f.label :birthday %></br>
+        <%= f.date_field :birthday, autocomplete: "on" %></div>
+
+    <div><%= f.label 'Update Profile Picture' %><br />
+      <%= f.file_field :avatar %></div></br></br>
+
+      <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "off" %></div>
+
+    <div><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+    <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+
+      <%= f.password_field :current_password %></div>
+
+
+    <div class="col-md-12"><%= f.submit "Update" %></div></br>
+
   <% end %>
+  <div class="col-md-12">
+  <h4>Cancel my account</h4>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
-
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-
-
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
-
-
-    <%= f.radio_button(:gender, "male", checked: true) %>
-    <%= f.label(:gender_male, "I am male") %>
-    <%= f.radio_button(:gender, "female") %>
-    <%= f.label(:gender_female, "I am female") %>    
-    <div><%= f.label :birthday %><br />
-      <%= f.date_field :birthday, autocomplete: "off" %></div>
-
-  <div><%= f.label 'Update Profile Picture' %><br />
-    <%= f.file_field :avatar %></div></br>
-
-  <div class="col-md-12"><%= f.submit "Update" %></div></br>
-
-<% end %>
-<div class="col-md-12">
-<h4>Cancel my account</h4>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-</div>
-<%= link_to "Back", :back %>
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  </div>
+  <%= link_to "Back", :back %>
 </div>

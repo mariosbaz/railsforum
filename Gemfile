@@ -20,6 +20,8 @@ gem 'devise'
 
 # Paperclip fir orofile photos
 gem "paperclip", "~> 4.2"
+gem 'aws-sdk'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
