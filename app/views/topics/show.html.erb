@@ -5,48 +5,50 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 				<h2 id="ajax_changed"><%= @topic.name %> Posts (<%=@topic.posts.count%>)</h2>
-				<h2>created by <%= cut_name(@topic.user.email)%> </h2>
+				<h3>created by <%= cut_name(@topic.user.email)%> </h2>
 				</div>
-
 				<div class="panel-body" >
 					<div class="container-fluid" id="ajax_posts_show">
 					<%if @topic.posts.any?%>
 					<%=render @posts%>	
 				    </div>
 					<%end%>
+					<%if user_signed_in?%>
+						<div class="container-fluid">
+							<div class="row-fluid">
+								<div >
+									<%=form_for([@topic,Post.new], remote: true) do |f|%>
+									<p>
+										<%=f.label :content, "New Post"%></br>
+										<%=f.text_area :content, cols: 40, rows: 5 %>
+									</p>
+									<p><%=f.submit "Add Post", class: "btn btn-lg btn-primary"%><%= link_to "Back", :back, class: "btn btn-lg btn-primary" %></p>
+
+									<%end%>
+								</div>
+							</div>
+						</div>
+						<%else%>
+						<div class="container-fluid" id="small_logged_out">
+						  <div id="label_log_out" >	
+						 	Login to create your post</br>
+							<%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
+							<%= link_to "Show users", users_path, class: 'btn btn-primary' %>
+						  </div>
+						  <div  id="label_log_out" >	
+						    New to RailsForum? Create Your Account</br>
+							<%=link_to "Signup",new_user_registration_path, class: 'btn btn-lg btn-primary'%>
+						  </div>
+						<%end%>
+						</div>
 				</div>
 			</div>
+
 		</div>
+	
+
 	</div>
 
-<%if user_signed_in?%>
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class='border-form-div'>
-			<%=form_for([@topic,Post.new], remote: true) do |f|%>
-			<p>
-				<%=f.label :content, "New Post"%></br>
-				<%=f.text_area :content%>
-			</p>
-			<p><%=f.submit "Add Post", class: "btn btn-lg btn-primary"%><%= link_to "Back", :back, class: "btn btn-lg btn-primary" %></p>
-
-			<%end%>
-		</div>
-	</div>
-</div>
-<%else%>
-<div class="container-fluid" id="small_logged_out">
-  <div id="label_log_out" >	
- 	Login to create your post</br>
-	<%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
-	<%= link_to "Show users", users_path, class: 'btn btn-primary' %>
-  </div>
-  <div  id="label_log_out" >	
-    New to RailsForum? Create Your Account</br>
-	<%=link_to "Signup",new_user_registration_path, class: 'btn btn-lg btn-primary'%>
-  </div>
-<%end%>
-</div>
 
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 

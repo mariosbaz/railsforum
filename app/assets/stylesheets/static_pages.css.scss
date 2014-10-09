@@ -9,9 +9,6 @@
 }
 /*body css */
 
-.dropdown-toggle{
-  padding:0;
-}
 
 body {
   padding-top: 100px;
@@ -54,21 +51,22 @@ section {
   text-align:left;
 	margin-left:80px; 
   padding-top: 0;
-  padding-bottom: 5px;
+  padding-bottom: 7px;
 }
 
 #dropdown {
-  text-transform: uppercase;
   font-weight: bold;
+  padding:0;
+  padding-top:5px;
 }
 
 .navbar-header{
   margin-left:-15px;
-  margin-bottom:0;  
 }
 
 .navbar-fixed-top{
     border-bottom: 4px solid rgb(10, 75, 95);
+
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -235,7 +233,6 @@ pre {
     font-size: 12px;
     list-style: square;
   }
-  width:400px;
     @include box_sizing;
 } 
 

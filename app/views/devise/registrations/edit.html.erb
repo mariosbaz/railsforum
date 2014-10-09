@@ -10,17 +10,7 @@
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
-        <%= f.radio_button(:gender, "male") %>
-        <%= f.label(:gender_male, "I am male") %>
-        <%= f.radio_button(:gender, "female") %>
-        <%= f.label(:gender_female, "I am female") %>    </br>
-      <div><%= f.label :birthday %></br>
-        <%= f.date_field :birthday, autocomplete: "on" %></div>
-
-    <div><%= f.label 'Update Profile Picture' %><br />
-      <%= f.file_field :avatar %></div></br></br>
-
-      <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+        <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "off" %></div>
 
     <div><%= f.label :password_confirmation %><br />
@@ -28,7 +18,17 @@
 
     <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
 
-      <%= f.password_field :current_password %></div>
+      <%= f.password_field :current_password, required: true %></div>
+
+        <%= f.radio_button(:gender, "male") %>
+        <%= f.label(:gender_male, "I am male") %>
+        <%= f.radio_button(:gender, "female") %>
+        <%= f.label(:gender_female, "I am female") %>    </br>
+      <div><%= f.label :birthday %></br>
+        <%= f.date_field :birthday, value: Time.now.strftime('%Y-%m-%d') %></div>
+
+    <div><%= f.label 'Update Profile Picture' %><br />
+      <%= f.file_field :avatar %></div></br></br>      
 
 
     <div class="col-md-12"><%= f.submit "Update" %></div></br>
