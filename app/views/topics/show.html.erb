@@ -23,7 +23,6 @@
 										<%=f.text_area :content, cols: 40, rows: 5 %>
 									</p>
 									<p><%=f.submit "Add Post", class: "btn btn-lg btn-primary"%><%= link_to "Back", :back, class: "btn btn-lg btn-primary" %></p>
-
 									<%end%>
 								</div>
 							</div>
@@ -31,12 +30,12 @@
 						<%else%>
 						<div class="container-fluid" id="small_logged_out">
 						  <div id="label_log_out" >	
-						 	Login to create your post</br>
+						 	<h4>Login to create your post</h4>
 							<%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
 							<%= link_to "Show users", users_path, class: 'btn btn-primary' %>
 						  </div>
 						  <div  id="label_log_out" >	
-						    New to RailsForum? Create Your Account</br>
+						    <h5>New to RailsForum? Create Your Account<h5>
 							<%=link_to "Signup",new_user_registration_path, class: 'btn btn-lg btn-primary'%>
 						  </div>
 						<%end%>
