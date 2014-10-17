@@ -25,7 +25,7 @@
         <%= f.radio_button(:gender, "female") %>
         <%= f.label(:gender_female, "I am female") %>    </br>
       <div><%= f.label :birthday %></br>
-        <%= f.date_field :birthday, value: Time.now.strftime('%Y-%m-%d') %></div>
+        <%= f.date_field :birthday %></div>
 
     <div><%= f.label 'Update Profile Picture' %><br />
       <%= f.file_field :avatar %></div></br></br>      
