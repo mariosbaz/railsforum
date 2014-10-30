@@ -6,7 +6,8 @@
 	            </div>	  
 			<div id="name"><%=@user.name%></div>
 			</div>
-	      <div class="container col-md-4 col-sm-5 col-xs-8 col-xs-offset-1" id="user_header">  
+			<div class="container col-md-6">
+	      <div class="container col-md-9 col-sm-5 col-xs-8 " id="user_header">  
 	        <div id="about">About </div></br>
 	        <div class="container-fluid">
 	        	<div class="row-fluid col-md-6 col-sm-6 col-xs-6">
@@ -45,6 +46,7 @@
 				  <% if user_signed_in? and current_user.id == @user.id%>
 			      <%= link_to 'Update profile', edit_user_registration_path%>
 			      <%end%>
+				</div>
 				</div>
 		    </div>      
 		  <div>
