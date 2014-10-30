@@ -1,13 +1,15 @@
-<div class='border-form-div'>
-<h2>Edit Topic</h2>
+<script type="text/javascript">
+  $(document).ready(function() {  	
+    $('.border-form-div').fadeIn("slow");
+  });
+</script>
 
+<div class='border-form-div'>
+  <h2>Edit Topic</h2>
 	<%= form_for(@topic) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
-
 	  <%= f.label :name%>
-	  <%= f.text_field :name %>	 
-
+	  <%= f.text_field :name %>
 	  <div><%= f.submit "Change", class: "btn btn-large btn-primary"%></div>
 	<% end %>
-
 </div>

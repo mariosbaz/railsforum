@@ -52,6 +52,7 @@ class TopicsController < ApplicationController
     redirect_to action: 'index'
   end  
 
+  
   private
 
   def topic_params

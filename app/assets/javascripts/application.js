@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
@@ -30,12 +32,13 @@ var time = new Date().getTime();
 
      setTimeout(refresh, 10000);
 
-$(function() {
-
-  $( "#welcome" ).fadeIn( 500, function() {
-    // Animation complete
-  });    
-  
+$(document).ready(function(){
+    $(window).scroll(function() {
+    if ($(this).scrollTop()) {
+        $('#backtop').fadeIn();
+    } else {
+        $('#backtop').fadeOut();
+    }
 });
-
+})
 

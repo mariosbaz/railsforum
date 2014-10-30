@@ -1,11 +1,16 @@
+<script type="text/javascript">
+  $(document).ready(function() {  	
+    $('.border-form-div').fadeIn("slow");
+  });
+</script>
+
 <div class='border-form-div'>
-		<%=form_for([@topic,Post.new], remote: true) do |f|%>
-		<p >
-			<%=f.label :content, "New Post"%></br>
-			<%=f.text_area :content%>
-		</p>
-		<p><%=f.submit "Add Post", class: "btn btn-large btn-primary"%><%= link_to "Back", :back, class: "btn btn-large btn-primary" %></p>
-
-		<%end%>
-
+  <%=form_for([@topic,Post.new], remote: true) do |f|%>
+    <p>
+	  <%=f.label :content, "New Post"%></br>
+	  <%=f.text_area :content%>
+	</p>
+	<p><%=f.submit "Add Post", class: "btn btn-large btn-primary"%><%= link_to "Back", :back, class: "btn btn-large btn-primary" %>
+	</p>
+  <%end%>
 </div>

@@ -18,7 +18,7 @@ gem 'will_paginate-bootstrap', '~> 1.0.1'
 # Use for User authentication
 gem 'devise'
 
-# Paperclip fir orofile photos
+# Paperclip for profile photos
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk'
 
@@ -40,6 +40,7 @@ end
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

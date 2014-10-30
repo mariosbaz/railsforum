@@ -11,7 +11,6 @@
 
 
 body {
-  padding-top: 100px;
   color: #000;
   margin:0 auto;
   background-attachment: fixed;
@@ -48,9 +47,7 @@ section {
 /*navbar css */
 
 #logo {
-  text-align:left;
-	margin-left:80px; 
-  padding-top: 0;
+  padding-top: 2px;
   padding-bottom: 7px;
 }
 
@@ -61,12 +58,14 @@ section {
 }
 
 .navbar-header{
-  margin-left:-15px;
+  margin-right: 0;
+  margin-left: 0;
+  float:left;
 }
 
-.navbar-fixed-top{
-    border-bottom: 4px solid rgb(10, 75, 95);
-
+.navbar-static-top{
+  border-bottom: 2px solid rgb(10, 75, 95);
+  margin-bottom:20px;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -74,61 +73,58 @@ section {
 }
 
 .navbar-nav.navbar-right:last-child{
-  margin-right:80px;
+  margin-right:20px;
 }
 
 .navbar-nav > li > a {
-    padding-top: 15px;
+  padding-top: 15px;
 }
 
 .navbar-inner {
   margin-left:10px;
 	padding-top:20px;
-	padding-bottom:0px;
-	margin-right:-40px;
 }
 
 .navbar-default{
-  margin-bottom:0;
+  margin-bottom:20px;
 }
 
 /*home page */
 #railsforum-hero-container{  
-  margin:20px;
-  margin-top:-35px;
   overflow:auto;
-  border-bottom:2px solid black;
+  margin-top:-20px;
+  margin-bottom:+20px;
+  border-bottom:2px solid gray;
   background-attachment: fixed;
   /*background-image: url("./background.jpg");*/  
   background-repeat:no-repeat;
-
     #hero_row{
-      margin-top:30px;
-      margin-left:10px;
-      margin-right:20px;
       #hero_header {  
       font: 50px Philosopher,Fantasy,Helvetica,Verdana,Arial;
       font-style:italic;
       margin-top:30px;
+      display:none;
       }  
     h2{
       font: 30px Satisfy,san-serif,arial;
       margin-top:20px;
       font-style:italic;
+      display:none;
       }   
     }
 }
 
 #small_logged_in{
   float:left;
-  margin-top:30px;
-  margin-bottom:40px;
+  margin-top:20px;
+  margin-bottom:20px;
   padding-top:10px;
   background:transparent;;
-  border: 2px solid black;
-  border-radius:15px;       
+  border: 1px solid black;
+  border-radius: 10px;
   box-shadow: 8px 8px 5px black;
   #label_log_in{
+    font-size:15px;
     margin:auto;
     padding:20px 20px 20px 20px;  
   }
@@ -136,16 +132,22 @@ section {
 
 #small_logged_out{
   float:left;
-  margin-top:30px;
-  margin-bottom:40px;
-  background:transparent;
-  border: 2px solid black;
-  border-radius:15px; 
+  margin-top:20px;
+  margin-bottom:20px;
+  background:white;
+  border: 1px solid black;
+  border-radius: 10px;
   box-shadow: 8px 8px 5px black;
-  #label_log_out{
+  display:none;
+  #label_log_out_up{
   margin:auto;
-  padding:5px 20px 15px 20px;
+  padding:15px 20px 15px 20px;
   }
+  #label_log_out_down{
+  margin:auto;
+  padding:0px 20px 15px 20px;
+  }
+
  }
 
 /*user header*/
@@ -157,6 +159,7 @@ section {
   border-radius:15px;  
   margin-bottom:10px;
   margin-top:20px;
+  margin-left:0;
   text-align:left;
   min-width:250px;
 }
@@ -168,9 +171,10 @@ section {
   padding: 19px 29px 29px;
   margin: 0 auto 20px;
   margin-top:20px;
-  background:transparent;
+  background: rgb(233,234,237);
   border: 2px solid black;
   box-shadow: 8px 8px 5px black;
+  display:none;
 }
 
 .border-form-div .form-signin-heading,
@@ -236,7 +240,7 @@ pre {
 } 
 
 .alert {
-  margin-top:-48px;
+  margin-top:-20px;
   position:relative;
   padding:10px;
 }
@@ -278,12 +282,15 @@ pre {
   border: 1px solid gray;
   word-wrap: break-word;
   min-width:160px;
-
  }
 
 #ajax_posts_show{
   margin-top:10px;
   word-wrap: break-word;
+}
+
+#ajax_changed{
+  padding:1px;  
 }
 
 #users_panel{
@@ -295,21 +302,18 @@ pre {
   border: 1px solid gray;
   word-wrap: break-word;
   display:inline-block;
-
 }
 
 #users_show{
   border-radius:5px;
   margin-top:15px;
   width:100%;
-  float:left;
   background-color:#F0F8FF;
   border: 1px solid gray;
   word-wrap: break-word;
  }
 
 /*css for the votes*/
-
 
 #score_value_container{
   #positive_score{
@@ -318,24 +322,20 @@ pre {
   border-radius:5px;
     min-width:30px;
     max-width:40px;
-
-  }
+  }  
  #negative_score{
     background: linear-gradient(to bottom, red, white);
     border: 1px solid black;
     border-radius:5px;
       min-width:30px;
       max-width:40px;
-
   }
-
   #zero_score{
     background-color:white;
     border: 1px solid black;
     border-radius:5px;
       min-width:30px;
       max-width:40px;
-
   }
 }
 
@@ -362,18 +362,18 @@ pre {
 /*panel css*/
 
 .panel-default > .panel-heading{
-    background: transparent;
+    background: rgb(201, 201, 214);
     box-shadow: 8px 8px 5px black;
-    border: 2px solid rgb(32, 23, 25);
+    border: 1px solid rgb(32, 23, 25);
     min-width:200px;
-    padding-bottom:20px;
+    padding:7px;
     margin-bottom:0;
     overflow:hidden;    
     font-style:bold;
     }
 .panel-body {
   background-color: rgb(233,234,237);
-  border: 2px solid rgb(32, 23, 25);
+  border: 1px solid rgb(32, 23, 25);
   box-shadow: 8px 8px 5px black;
   overflow:hidden;
   min-width:200px;
@@ -399,7 +399,6 @@ float:right;
   overflow:hidden;
   padding:0;
   background:transparent;
-
 }
 
 #avatar_small{
@@ -409,7 +408,6 @@ float:right;
 
 #avatar_mini{
   margin-top:10px;
-
 }
 
 #post_container_left{
@@ -429,55 +427,28 @@ float:right;
   border: 1px solid black;
   display:inline-block;
   overflow:hidden;
-  }
+}
 
 #post_container_right{
   border-radius: 10px;
+  margin-right:0;
 }
 
 input[type="file"] {
   float:right;
   margin-top:5px;
   margin-bottom:15px;
-  }
+}
 
 #white{
   color:white;
 }
 
-span.glyphicon-circle-arrow-down {
-  padding: 0;
-  font-size:  40px;
-  line-height: 1.33;
-}
-
-#arrow_down {
-  padding: 10px 16px;
-  line-height: 1;
-  background-color:transparent;
-}
-
-.object {
-    position: relative;
-}
-.van {
-    top: 90%;
-    left: 44%;
-}
-
 #axis:hover .move-right{
-    transform: translate(50px,0);
-    -webkit-transform: translate(50px,0); /** Chrome & Safari **/
-    -o-transform: translate(50px,0); /** Opera **/
-    -moz-transform: translate(50px,0); /** Firefox **/
-}
-
-.object {
-    position: absolute;
-    transition: all 2s ease-in-out;
-    -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
-    -moz-transition: all 2s ease-in-out; /** Firefox **/
-    -o-transition: all 2s ease-in-out; /** Opera **/
+  transform: translate(50px,0);
+  -webkit-transform: translate(50px,0); /** Chrome & Safari **/
+  -o-transform: translate(50px,0); /** Opera **/
+  -moz-transform: translate(50px,0); /** Firefox **/
 }
 
 .navbar-fixed-top{
@@ -504,7 +475,7 @@ span.glyphicon-circle-arrow-down {
 }
 
 #about{
-border-bottom:2px solid black;
+  border-bottom:2px solid black;
   font-size:30px;
   font-style:italic;
   text-align:center;  
@@ -513,10 +484,75 @@ border-bottom:2px solid black;
 #update{
   font-size:20px;
   text-align:center;
-  margin:5px;
-  
+  margin:5px;  
 }
 
 #profile_container{
-    border-bottom:2px solid black;
+  border-bottom:2px solid black;
+}
+
+#backtop span{
+  -moz-border-radius: 6px;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 1px rgba(0, 0, 0, 0.2) inset;
+  -moz-transition: 600ms;
+  -webkit-border-radius: 6px;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 1px rgba(0, 0, 0, 0.2) inset;
+  -webkit-transition: 600ms;
+  background: rgba(191, 195, 191, 0.3) url("./top_button.png") no-repeat center center;
+  border-radius: 6px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 1px rgba(0, 0, 0, 0.2) inset;
+  display: block;
+  height: 40px;
+  margin: 5px 0 5px 5px;
+  transition: 600ms;
+  width: 40px;
+  padding:0;  
+}
+
+#backtop a {
+  color: #000;
+  display: block;
+  font-family: Helvetica,Arial,Sans-Serif;
+  font-size: 30px;
+  background: rgba(191, 195, 191, 0.3);
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  padding:0;
+  background-color: transparent;
+}
+
+#header_container{
+  font-size:2em;
+  margin-top:10px;
+}
+
+#header_topic_container{
+  font-size:2em;
+  font-family:Verdana,Arial;
+  font-weight:bold;
+  padding:16px;
+  margin:0;
+  border-right: 1px solid black;  
+}
+
+#header_container_left{
+  text-align: right;
+  padding:9px;
+}
+
+#header_container_right{
+  padding:9px;
+  text-align: left;
+}
+
+#small_div, #ajax_changed_header{
+  font-size:1em;
+  font-family:Arial;
+  font-style:italic;
+  font-weight: bold;
+}
+
+#home_down_container{
+  display:none;
 }

@@ -1,53 +1,80 @@
-
 <div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-				<h2 id="ajax_changed"><%= @topic.name %> Posts (<%=@topic.posts.count%>)</h2>
-				<h3>created by <%= cut_name(@topic.user.email)%> </h2>
-				</div>
-				<div class="panel-body" >
-					<div class="container-fluid" id="ajax_posts_show">
-					<%if @topic.posts.any?%>
-					<%=render @posts%>	
-				    </div>
-					<%end%>
-					<%if user_signed_in?%>
-						<div class="container-fluid">
-							<div class="row-fluid">
-								<div >
-									<%=form_for([@topic,Post.new], remote: true) do |f|%>
-									<p>
-										<%=f.label :content, "New Post"%></br>
-										<%=f.text_area :content, cols: 40, rows: 5 %>
-									</p>
-									<p><%=f.submit "Add Post", class: "btn btn-lg btn-primary"%><%= link_to "Back", :back, class: "btn btn-lg btn-primary" %></p>
-									<%end%>
-								</div>
-							</div>
-						</div>
-						<%else%>
-						<div class="container-fluid" id="small_logged_out">
-						  <div id="label_log_out" >	
-						 	<h4>Login to create your post</h4>
-							<%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
-							<%= link_to "Show users", users_path, class: 'btn btn-primary' %>
-						  </div>
-						  <div  id="label_log_out" >	
-						    <h5>New to RailsForum? Create Your Account<h5>
-							<%=link_to "Signup",new_user_registration_path, class: 'btn btn-lg btn-primary'%>
-						  </div>
-						<%end%>
-						</div>
-				</div>
-			</div>
-
+  <div class="row">
+    <div class="col-md-9 col-md-offset-1">
+	  <div class="panel panel-default">
+	    <div class="panel-heading">
+	    	<div class="container col-md-7 col-sm-12 col-xs-12" id="header_topic_container">
+		  	Topic: <%= @topic.name %>
+		    </div>
+		<div class="container col-md-2 col-sm-6 col-xs-6" id="header_container_left">
+		<div class="row">
+		  <div class="col-md-12 col-sm-11 col-xs-11" id="small_div">
+		  	creator:
+		  </div>
+		  <div class="col-md-12 col-sm-11 col-xs-11" id="small_div">
+		  	created:
+		  </div>	
+		  <div class="col-md-12 col-sm-11 col-xs-11" id="small_div">
+			posts:
+		  </div>		
+		  </div>		
+		  </div>  
+		  <div class="container col-md-3 col-sm-6 col-xs-6"  id="header_container_right">
+		<div class="row">
+		  <div class="col-md-12 col-sm-8 col-xs-10" id="small_div">
+		  	<%= cut_name(@topic.user.email)%>
+		  </div>
+		  <div class="col-md-12 col-sm-8 col-xs-10" id="small_div">
+			<%= localtimer(@topic).strftime("%d %b. %Y") %> , <%= localtimer(@topic).strftime("%H:%M:%S") %>
+		  </div>	
+		  <div class="col-md-12 col-sm-8 col-xs-10" id="ajax_changed_header">			
+			<%=@topic.posts.count%>
+		  </div>		
+		  </div>		
+		  </div>	  
 		</div>
-	
-
+		<div class="panel-body" >
+		  <div class="container-fluid" id="ajax_posts_show">
+		    <%if @topic.posts.any?%>
+			  <%=render @posts%>
+			<%end%>	
+		  </div>
+		  <%if user_signed_in?%>
+		    <div class="container-fluid">
+			  <div class="row-fluid" style="overflow:auto">
+			    <div>
+				  <%=form_for([@topic,Post.new], remote: true) do |f|%>
+				    <p>
+					  <%=f.label :content, "New Post"%></br>
+					  <%=f.text_area :content, cols: 35, rows: 5 %>
+					</p>
+					<p><%=f.submit "Add Post", class: "btn btn-lg btn-primary"%><%= link_to "Back", :back, class: "btn btn-lg btn-primary" %>
+					</p>
+				  <%end%>
+				</div>
+			  </div>
+			</div>
+		  <%else%>
+		    <div class="container col-md-5 col-md-offset-1" id="small_logged_out">
+			  <div id="label_log_out_up" >	
+			    <h4>Login to create your post</h4>
+				<%= link_to "Login", new_user_session_path, class: 'btn btn-primary'  %>
+				<%= link_to "Show users", users_path, class: 'btn btn-primary' %>
+			  </div>
+			  <div  id="label_log_out_down" >	
+			    <h5>New to RailsForum? Create Your Account<h5>
+				<%=link_to "Signup",new_user_registration_path, class: 'btn btn-lg btn-primary'%>
+			  </div>
+			</div>
+		  <%end%>
+		</div>
+	  </div>
 	</div>
-
+  </div>
+</div>
+<p id="backtop">  
+      <a href="#top"><span></span></a>
+    </p>
 
 <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 

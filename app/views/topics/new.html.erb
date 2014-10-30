@@ -1,9 +1,15 @@
+<script type="text/javascript">
+  $(document).ready(function() {  	
+    $('.border-form-div').fadeIn("slow");
+  });
+</script>
+
 <div class='border-form-div'>
   <h2>Create a new Topic</h2>
 	<%= form_for(@topic) do |f| %>
 	  <%= render 'shared/error_messages', object: f.object %>
 	  <%= f.label :name%>
-	  <%= f.text_field :name %>	 
+	  <%= f.text_area :name %>	 
 
 	  <div><%= f.submit "Create", class: "btn btn-large btn-primary"%></div>
 	<% end %>

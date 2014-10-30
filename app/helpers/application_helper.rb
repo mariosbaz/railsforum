@@ -7,4 +7,10 @@ module ApplicationHelper
     def cut_name(email)
     	email.slice(0..(email.index('@')-1))    	
     end
+
+    def localtimer(topic)
+    	@topic = Topic.find(params[:id])
+    	@topic.created_at.localtime
+  end
+
 end

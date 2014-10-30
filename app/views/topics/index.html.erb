@@ -1,38 +1,42 @@
+<script type="text/javascript">
+  $(document).ready(function() {    
+    $('.border-form-div').fadeIn("slow");
+  });
+</script>
+
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6 col-md-offset-1">
       <div class="panel panel-default">
         <div class="panel-heading">
           <h2>All Topics <span class="brand" >(<%=Topic.all.count%>)</span></h2>
         </div>
         <div class="panel-body" >
           <%if @topics.any?%>
+            <%@topics.each do |topic|%>
+            <div class="container" id="posts_show">  
+              <div class="row">
+                <div class="col-md-3" id="label"> Posts: <%=topic.posts.count%></div>
+              </div>
+              <div class="row">
+                <div class="col-md-8" id="content"><%=link_to "#{topic.name}",topic_path(topic)%></div>
+              </div>
+              <div class="row">
+                <div class="col-md-6" id="label">created <%=time_ago_in_words(topic.created_at)%> ago by <%= cut_name(topic.user.email)%></div>
+              </div>
+              <div class="row-fluid">
+                <div class="col-md-4" id="label">
+                  <%if user_signed_in? and current_user.id==topic.user_id  %>
 
-          <%@topics.each do |topic|%>
-          <div class="container" id="posts_show">  
-            <div class="row">
-            <div class="col-md-3" id="label"> Posts: <%=topic.posts.count%></div>
-                    </div>
-            <div class="row">
-              <div class="col-md-8" id="content"><%=link_to "#{topic.name}",topic_path(topic)%></div>
-            </div>
-            <div class="row">
-              <div class="col-md-6" id="label">created <%=time_ago_in_words(topic.created_at)%> ago by <%= cut_name(topic.user.email)%></div>
-            </div>
-            <div class="row-fluid">
-              <div class="col-md-4" id="label">
-                <%if user_signed_in? and current_user.id==topic.user_id  %>
-
-                  <div class="btn-group" id="edit_delete">
-                    <%=link_to "Delete",topic , method: :delete, confirm: "Are You sure?",class:"btn  btn-default"%>
-                    <%=link_to "Edit",edit_topic_path(topic),class:"btn btn-default"%>                    
-                  </div>
-                 
+                    <div class="btn-group" id="edit_delete">
+                      <%=link_to "Delete",topic , method: :delete, confirm: "Are You sure?",class:"btn  btn-default"%>
+                      <%=link_to "Edit",edit_topic_path(topic),class:"btn btn-default"%>               
+                    </div>                 
                   <%end%>
+                </div>
               </div>
             </div>
-          </div>
-          <%end%>
+            <%end%>
           <%end%>
         </div>
       </div>
@@ -55,11 +59,9 @@
           <%end%>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </div>    <div class="col-md-4">
 
-<% if user_signed_in?%>
+    <% if user_signed_in?%>
 <div class="container-fluid">
   <div class="row-fluid">
     <div class='border-form-div'>
@@ -75,5 +77,12 @@
   </div>
 </div>
 <% end %>
+  </div>
+  </div>
+</div>
 
+
+<p id="backtop">  
+      <a href="#top"><span></span></a>
+    </p>
 <%= will_paginate @topics, renderer: BootstrapPagination::Rails %>
