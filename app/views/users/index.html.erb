@@ -5,26 +5,30 @@
         <div class="panel-heading" >
           <div class="row-fluid" >
             <h3>All Users</h3>                        
-            <div class="col-md-3 col-sm-3 col-xs-3"> Pic</div>
-            <div class="col-md-3 col-sm-3 col-xs-3"> Name</div>
+            <div class="col-md-4 col-sm-4 col-xs-4"> Name</div>
             <div class="col-md-3 col-sm-3 col-xs-3"> Posts</div>
-            <div class="col-md-3 col-sm-3 col-xs-3"> Joined</div>
+            <div class="col-md-5 col-sm-5 col-xs-5"> Joined</div>
           </div>
         </div>
         <div class="panel-body" >
           <%@users.each do |user|%>
             <div class="container-fluid" id="users_show">   
               <div class="row-fluid">
-                <div class="col-md-3 col-sm-3 col-xs-2">  
-                  <%= image_tag user.avatar.url(:mini) %> 
+                <div class="col-md-1 col-sm-1 col-xs-1 ">  
+                  <div class="pull-left"><%= image_tag user.avatar.url(:mini) %>
+                  </div>
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-4">   
-                  <%=link_to "#{cut_name(user.email)}", user_path(user)%>
+                <div class="col-md-3 col-sm-3 col-xs-3"> 
+                  <% unless user.name == "Unknown"%>
+                    <%= link_to user.name, user_path(user)%>
+                  <% else %>
+                    <%= link_to "#{cut_name(user.email)}", user_path(user)%>
+                  <% end %>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-2"> 
                   <%= user.posts.count %> 
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-4"> 
+                <div class="col-md-5 col-sm-5 col-xs-5"> 
                   <%= user.created_at.strftime("%d %b. %Y") %> 
                 </div>
               </div>
@@ -40,10 +44,14 @@
         </div>
         <div class="panel-body" >
           <%@newusers.each do |user|%>
-            <div class="container" id="users_show">   
-              <div class="col-md-3 col-sm-3 col-xs-3"> <%= image_tag user.avatar.url(:mini) %></div>  
-              <div   class="col-md-8 col-sm-6 col-xs-7 pull-right" id="user_index"> 
-                <%=link_to "#{cut_name(user.email)}", user_path(user)%>
+            <div class="container-fluid" id="users_show">   
+              <div class="col-md-4 col-sm-4 col-xs-4"> <%= image_tag user.avatar.url(:mini) %></div>  
+              <div   class="col-md-7 col-sm-7 col-xs-7" id="user_index"> 
+                <% unless user.name == "Unknown"%>
+                  <%= link_to user.name, user_path(user)%>
+                <% else %>
+                  <%= link_to "#{cut_name(user.email)}", user_path(user)%>
+                <% end %>              
               </div>
             </div>
           <%end%>

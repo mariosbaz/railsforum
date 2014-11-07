@@ -4,26 +4,24 @@
 	  <div class="panel panel-default">
 	    <div class="panel-heading">
 	    	<div class="container col-md-7 col-sm-12 col-xs-12" id="header_topic_container">
-		  	Topic: <%= @topic.name %>
+		  	  Topic: <%= @topic.name %>
 		    </div>
-		<div class="container col-md-2 col-sm-6 col-xs-6" id="header_container_left">
-		<div class="row">
-		  <div class="col-md-12 col-sm-11 col-xs-11" id="small_div">
-		  	creator:
-		  </div>
-		  <div class="col-md-12 col-sm-11 col-xs-11" id="small_div">
-		  	created:
-		  </div>	
-		  <div class="col-md-12 col-sm-11 col-xs-11" id="small_div">
-			posts:
-		  </div>		
-		  </div>		
-		  </div>  
-		  <div class="container col-md-3 col-sm-6 col-xs-6"  id="header_container_right">
-		<div class="row">
-		  <div class="col-md-12 col-sm-8 col-xs-10" id="small_div">
-		  	<%= cut_name(@topic.user.email)%>
-		  </div>
+		    <div class="container col-md-2 col-sm-6 col-xs-6" id="header_container_left">
+		      <div class="row">
+		        <div class="col-md-12 col-sm-11 col-xs-11" id="small_div">creator:</div>
+		        <div class="col-md-12 col-sm-11 col-xs-11" id="small_div">created:</div>	
+		        <div class="col-md-12 col-sm-11 col-xs-11" id="small_div">posts:</div>		
+		      </div>		
+		    </div>  
+		    <div class="container col-md-3 col-sm-6 col-xs-6"  id="header_container_right">
+		      <div class="row">
+		        <div class="col-md-12 col-sm-8 col-xs-10" id="small_div">
+		          <% unless @topic.user.name == "Unknown"%>
+                    <%= link_to @topic.user.name, user_path(@topic.user)%>
+                  <% else %>
+                    <%= link_to "#{cut_name(@topic.user.email)}", user_path(@topic.user)%>
+                  <% end %>
+		        </div>
 		  <div class="col-md-12 col-sm-8 col-xs-10" id="small_div">
 			<%= localtimer(@topic).strftime("%d %b. %Y") %> , <%= localtimer(@topic).strftime("%H:%M:%S") %>
 		  </div>	

@@ -1,13 +1,18 @@
 Railsforum::Application.routes.draw do
 
   devise_for :users 
-  resources :users
+  resources :users do 
+    member do 
+      get :following, :followers
+    end
+  end
   
   resources :topics do 
     resources :posts 
   end  
 
   resources :votes  
+  resources :relationships, only: [:create, :destroy]
 
   root to: "static_pages#home"
   # The priority is based upon order of creation: first created -> highest priority.

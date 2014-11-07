@@ -24,13 +24,13 @@ var time = new Date().getTime();
      });
 
      function refresh() {
-         if(new Date().getTime() - time >= 60000) 
+         if(new Date().getTime() - time >= 180000) 
              window.location.reload(true);
          else 
-             setTimeout(refresh, 10000);
+             setTimeout(refresh, 15000);
      }
 
-     setTimeout(refresh, 10000);
+     setTimeout(refresh, 15000);
 
 $(document).ready(function(){
     $(window).scroll(function() {

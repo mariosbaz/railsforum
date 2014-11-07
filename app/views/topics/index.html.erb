@@ -50,10 +50,17 @@
           <%@newtopics.each do |newtopic|%>
             <div class="container" id="posts_show">                     
               <div class="row">
-                <div class="col-md-6" id="content"><%=link_to "#{newtopic.name}", topic_path(newtopic) %></div>
+                <div class="col-md-6" id="content"><%= link_to "#{newtopic.name}", topic_path(newtopic) %></div>
               </div>
               <div class="row">
-                <div class="col-md-12" id="label">created <%=time_ago_in_words(newtopic.created_at)%> ago by <%=cut_name(newtopic.user.email)%></div>
+                <div class="col-md-12" id="label">created <%=time_ago_in_words(newtopic.created_at)%> 
+                  ago by 
+                  <% unless newtopic.user.name == "Unknown"%>
+                    <%= link_to newtopic.user.name, user_path(newtopic.user)%>
+                  <% else %>
+                    <%= link_to "#{cut_name(newtopic.user.email)}", user_path(newtopic.user)%>
+                  <% end %>
+                </div>
               </div>                   
             </div>
           <%end%>
@@ -62,7 +69,7 @@
     </div>    
     <div class="col-md-4 col-md-offset-1">
 
-    <% if user_signed_in?%>
+<% if user_signed_in?%>
 <div class="container-fluid">
   <div class="row-fluid">
     <div class='border-form-div'>

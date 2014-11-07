@@ -152,15 +152,16 @@ section {
 
 /*user header*/
 
-#user_header {
+.user_header {
   font-size:1em;
   background-color:white;
   border: 2px solid black;
   border-radius:5px;  
-  margin-bottom:10px;
+  margin-bottom:30px;
   margin-top:20px;
   text-align:left;
   min-width:250px;
+  padding: 10px 10px 10px 10px;
 }
 
 /*styling some containers*/
@@ -260,10 +261,25 @@ pre {
   color:gray;
 }
 
+#label_topic{
+  font-size:14px;
+  float:right;
+  text-align:left;
+  color:gray;
+  margin-bottom:5px;
+}
+
 #content {
   text-align:left;
   margin-left:25px;
   margin-top:20px;
+  margin-bottom:10px;
+  font-size:17px;
+}
+
+#content_accordion {
+  text-align:left;
+  margin-left:25px;
   margin-bottom:10px;
   font-size:17px;
 }
@@ -306,10 +322,10 @@ pre {
 #users_show{
   border-radius:5px;
   margin-top:15px;
-  width:100%;
   background-color:#F0F8FF;
   border: 1px solid gray;
   word-wrap: break-word;
+  display: block;
  }
 
 /*css for the votes*/
@@ -470,8 +486,8 @@ input[type="file"] {
 }
 
 #about{
-  border-bottom:2px solid black;
-  font-size:30px;
+  border-bottom: 2px solid gray;
+  font-size:25px;
   font-style:italic;
   text-align:center;  
 }
@@ -482,9 +498,6 @@ input[type="file"] {
   margin:5px;  
 }
 
-#profile_container{
-  border-bottom:2px solid black;
-}
 
 #backtop span{
   -moz-border-radius: 6px;
@@ -550,4 +563,37 @@ input[type="file"] {
 
 #home_down_container{
   display:none;
+}
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+#border_top {
+  margin-top:10px;
+  border-top: 1px solid gray;
+  padding: 10px 10px 0 10px;
+}
+
+#center {
+  padding-top:30px;
 }
