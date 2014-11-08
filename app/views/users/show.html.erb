@@ -29,19 +29,19 @@ $(document).ready(function(){
 	      <div class="row-fluid col-md-5">
 	        <%=@user.posts.count%>		    
 		  </div>
-		  <% if user_signed_in? %>
+		  
 		  <div class="container col-md-12 " id="user_bottom">
 		    <div class="col-md-6"><%= render 'shared/stats'%></div>
+		    <% if user_signed_in? %>
 			<div class="col-md-6"><%= render 'follow_form'%></div>
 			  <% if current_user.id == @user.id %>			   
-			      <h4><%= link_to 'Update profile', edit_user_registration_path%></h4>
+			    <h4><%= link_to 'Update profile', edit_user_registration_path%></h4>
 			  <% end %>
+		    </div>
+		  	<% end %>
 		  </div>
-		  </div>
-		  <% end %>		    
 	  </div>	  
 	</div>	
-	<div>
   </div>      
 </div>
 
@@ -62,7 +62,7 @@ $(document).ready(function(){
 				    <div id="label">created  <%=time_ago_in_words(post.updated_at)%> ago </div>
 				    <div class="row-fluid">
 			          <div class="col-md-12" id="label">
-				        <%if user_signed_in? and current_user.id==post.user_id  %>
+				        <%if user_signed_in? and current_user.id == post.user_id  %>
 				          <div id="edit_delete">
 					        <%=link_to "Delete",topic_post_path(post.topic,post),method: :delete, 
 					          confirm: "Are You sure?",class:"btn  btn-default"%>
@@ -78,7 +78,7 @@ $(document).ready(function(){
 	        </div>
 	      <%end%>
 	    </div>
-	    <div class="row-fluid col-md-5">
+	    <div class="row-fluid col-md-6">
 	    	<% if user_signed_in? and current_user.id == @user.id  %>
               <% if @feed_items.any? %>
 			    <div class="panel panel-default">
@@ -89,12 +89,12 @@ $(document).ready(function(){
 		            <div id="menu">
 		        	  <% @feed_items.each do |item|%>
 			            <h3> <%= item.content[0..2] %>... about <%=time_ago_in_words(item.created_at)%> 
-			            	ago by  <strong><%= cut_name(item.user.email) %> </strong></h3>
+			            	ago by  <strong><%= item.user.name %> </strong></h3>
 			            <div>
 			              <strong>
-			              	<div id="label_topic" >Topic: <%=link_to item.topic.name,topic_path(item.topic_id)%></div></br>
+			              	<div class="col-md-12" >Topic: <%=link_to item.topic.name,topic_path(item.topic_id)%></div></br>
 			              </strong>
-			              <div id="content_accordion">
+			              <div class="col-md-12" id="content_accordion">
 			              	 <%= item.content %> 
 			              	</div> 
 			            </div>
@@ -103,8 +103,8 @@ $(document).ready(function(){
 			    </div>
 			  </div>
 			</div>    
-		  <% end %>
-  	    <div class="row-fluid col-md-5">
+		  <% end %></br>
+  	    <div class="container col-md-6">
 	      <% if @user.topics.count > 0 %>
 	        <div class="panel panel-default">
 		      <div class="panel-heading"><h2>My Topics</h2></div>
