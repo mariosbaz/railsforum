@@ -4,33 +4,31 @@ $(document).ready(function(){
 });
 </script>
 
-<div class= "container col-md-11  col-sm-12 col-xs-12" id="profile_container"> 
+<div class= "container col-md-10 col-md-offset-1"> 
   <div class="row">
-    <div class="container col-md-7 col-md-offset-3" id="avatar_medium">
-      	<div class="pull-left"><%= image_tag @user.avatar.url(:medium) %></div>
-	      <div class="container-fluid col-md-8 col-sm-5 col-xs-8" id="user-header">  
-	    <div id="about">
-              <%= @user.name%>
-	    	</div></br>
-	    <div class="container-fluid">
-	      <div class="row-fluid col-md-5 col-sm-6 col-xs-6" >Joined:</div>
-	      <div class="row-fluid col-md-5 col-sm-6 col-xs-6">
+    <div class="container col-md-8 col-md-offset-2" id="avatar_medium">
+      <div class="pull-left"><%= image_tag @user.avatar.url(:medium) %></div>
+	    <div class="container-fluid col-md-8">  
+	    <div class="container col-md-12" id="user_top"><%= @user.name %>	</div>
+	    <div class="container col-md-12" id="user_middle">
+	      <div class="row-fluid col-md-5" >Joined:</div>
+	      <div class="row-fluid col-md-5">
 		    <%=@user.created_at.strftime("%d %b. %Y")%>    
 		  </div>
-	      <div class="row-fluid col-md-5 col-sm-6 col-xs-6">Birthday:</div>
-	      <div class="row-fluid col-md-5 col-sm-6 col-xs-6">
+	      <div class="row-fluid col-md-5">Birthday:</div>
+	      <div class="row-fluid col-md-5">
 		    <%= @user.birthday %>				    
 		  </div>
-	      <div class="row-fluid col-md-5 col-sm-6 col-xs-6">Gender:</div>
-	      <div class="row-fluid col-md-5 col-sm-6 col-xs-6">
+	      <div class="row-fluid col-md-5">Gender:</div>
+	      <div class="row-fluid col-md-5">
 		    <%= @user.gender %></br>
 		  </div>
-	      <div class="row-fluid col-md-5 col-sm-6 col-xs-6">Posts:</div>
-	      <div class="row-fluid col-md-5 col-sm-6 col-xs-6">
+	      <div class="row-fluid col-md-5">Posts:</div>
+	      <div class="row-fluid col-md-5">
 	        <%=@user.posts.count%>		    
 		  </div>
 		  <% if user_signed_in? %>
-		  <div class="row-fluid col-md-12 col-sm-12 col-xs-12" id="border_top">
+		  <div class="container col-md-12 " id="user_bottom">
 		    <div class="col-md-6"><%= render 'shared/stats'%></div>
 			<div class="col-md-6"><%= render 'follow_form'%></div>
 			  <% if current_user.id == @user.id %>			   
@@ -45,11 +43,10 @@ $(document).ready(function(){
   </div>      
 </div>
 
-<div class="container col-md-10 col-md-offset-1">
-  <div class="row">
+<div class="row">
     <div class="col-md-7">
       <div class="container">
-	    <div class="row-fluid col-md-6  col-sm-7 col-xs-8">
+	    <div class="row-fluid col-md-6">
 	      <%if @user.posts.count > 0 %>
 	        <div class="panel panel-default">
 		      <div class="panel-heading">
@@ -79,7 +76,7 @@ $(document).ready(function(){
 	        </div>
 	      <%end%>
 	    </div>
-	    <div class="row-fluid col-md-5 col-sm-7 col-xs-8">
+	    <div class="row-fluid col-md-5">
 	    	<% if user_signed_in? and current_user.id == @user.id  %>
               <% if @feed_items.any? %>
 			    <div class="panel panel-default">
@@ -105,7 +102,7 @@ $(document).ready(function(){
 			  </div>
 			</div>    
 		  <% end %>
-  	    <div class="row-fluid col-md-5  col-sm-7 col-xs-8">
+  	    <div class="row-fluid col-md-5">
 	      <% if @user.topics.count > 0 %>
 	        <div class="panel panel-default">
 		      <div class="panel-heading"><h2>My Topics</h2></div>
@@ -144,7 +141,6 @@ $(document).ready(function(){
   </div>
 
 <% end %>
-</div>
 
 <% if user_signed_in?%>
 <div class="container-fluid">

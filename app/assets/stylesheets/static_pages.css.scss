@@ -408,13 +408,13 @@ float:right;
   margin-top:20px;
   text-align:center;
   overflow:hidden;
-  padding:0;
+  padding:5px 5px 5px 5px;
   background:rgb(233,234,237);
 }
 
 #avatar_small{
-    margin-top:10px;
-    overflow:hidden;
+  margin-top:10px;
+  overflow:hidden;
 }
 
 #avatar_mini{
@@ -484,12 +484,28 @@ input[type="file"] {
   text-align:center;
 }
 
-#about{
+#user_top{
   border-bottom: 1px solid gray;
   font-size:25px;
   font-style:italic;
-  text-align:center;  
+  text-align:center;
+  vertical-align: middle;
+  padding: 10px 10px 10px 10px;  
 }
+
+#user_middle{
+  margin-top:10px;
+  margin-bottom:10px;
+  padding: 10px 10px 10px 10px;
+}
+
+#user_bottom {
+  margin-top:10px;
+  border-top: 1px solid gray;
+  padding: 10px 0 0 0;
+}
+
+
 
 #update{
   font-size:20px;
@@ -587,12 +603,7 @@ input[type="file"] {
   }
 }
 
-#border_top {
-  margin-top:10px;
-  border-top: 1px solid gray;
-  padding: 10px 10px 0 10px;
-}
-
 #center {
   padding-top:30px;
 }
+
