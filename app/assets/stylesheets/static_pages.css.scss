@@ -501,10 +501,16 @@ input[type="file"] {
 #user_bottom {
   margin-top:10px;
   border-top: 1px solid gray;
-  padding: 10px 10px 10px 10px;
+  padding: 20px 10px 10px 10px;
 }
 
-
+#image{
+  padding-top:10px;
+  padding-bottom:10px;
+  margin-left:-20px;
+  overflow:hidden;
+  padding-bottom:10px;
+}
 
 #update{
   font-size:20px;

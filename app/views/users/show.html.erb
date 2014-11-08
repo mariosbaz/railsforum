@@ -7,8 +7,10 @@ $(document).ready(function(){
 <div class= "container col-md-10 col-md-offset-1"> 
   <div class="row">
     <div class="container col-md-8 col-md-offset-2" id="avatar_medium">
-      <div class="pull-left"><%= image_tag @user.avatar.url(:medium) %></div>
-	    <div class="container-fluid col-md-8">  
+      <div class="container col-md-4" >
+      	<div id="image"><%= image_tag @user.avatar.url(:medium) %></div>
+      </div>
+	  <div class="container col-md-8">  
 	    <div class="container col-md-12" id="user_top"><%= @user.name %>	</div>
 	    <div class="container col-md-12" id="user_middle">
 	      <div class="row-fluid col-md-5" >Joined:</div>
