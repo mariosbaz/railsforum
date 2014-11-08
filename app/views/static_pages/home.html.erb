@@ -51,7 +51,7 @@ $(document).ready(function(){
 			    <div class="row" id="avatar_mini">    	
 				  <%= image_tag post.user.avatar.url(:small) %>  
 				</div>
-				<div class="row"><strong><%= cut_name(post.user.email) %></strong></div>
+				<div class="row"><strong><%=link_to post.user.name, post.user %></strong></div>
 			  </div>				 	
 			  <div id="label"><%=link_to "Browse #{post.topic.name}",topic_path(post.topic_id)%></div>		
               <div class="row">

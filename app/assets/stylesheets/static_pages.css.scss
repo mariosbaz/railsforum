@@ -157,8 +157,6 @@ section {
   background-color:white;
   border: 2px solid black;
   border-radius:5px;  
-  margin-bottom:30px;
-  margin-top:20px;
   text-align:left;
   min-width:250px;
   padding: 10px 10px 10px 10px;
@@ -404,12 +402,13 @@ float:right;
 
 #avatar_medium{
   border-radius:15px;
+  border:1px solid gray;
   margin-bottom:20px;
   margin-top:20px;
   text-align:center;
   overflow:hidden;
   padding:0;
-  background:transparent;
+  background:rgb(233,234,237);
 }
 
 #avatar_small{
@@ -472,10 +471,9 @@ input[type="file"] {
 }
 
 #avatar_container{
-  display:inline-block;
-  background-color:black;
+  background-color: rgb(233,234,237);
   border-radius: 10px;
-  border-right: 1px solid black;
+  border: 1px solid black;
   padding:10px;
 }
 
@@ -486,7 +484,7 @@ input[type="file"] {
 }
 
 #about{
-  border-bottom: 2px solid gray;
+  border-bottom: 1px solid gray;
   font-size:25px;
   font-style:italic;
   text-align:center;  
