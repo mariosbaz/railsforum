@@ -8,7 +8,7 @@ $(document).ready(function(){
   <div class="row">
     <div class="container col-md-7 col-md-offset-3" id="avatar_medium">
       	<div class="pull-left"><%= image_tag @user.avatar.url(:medium) %></div>
-	    	  <div class="container col-md-8 col-sm-5 col-xs-8" id="user-header">  
+	      <div class="container-fluid col-md-8 col-sm-5 col-xs-8" id="user-header">  
 	    <div id="about">
               <%= @user.name%>
 	    	</div></br>
