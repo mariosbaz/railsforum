@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles: { medium: "300x300>", small: "80x80>", mini:"40x40>" },
    :default_url => "/assets/avatar_:style.jpg"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates :name, presence: true, uniqueness: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :topics, dependent: :destroy
@@ -37,7 +38,6 @@ class User < ActiveRecord::Base
   def feed
     Post.from_users_followed_by(self)
   end
-
 
 end
 

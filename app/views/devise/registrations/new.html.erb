@@ -17,7 +17,7 @@
       <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
     <div><%= f.label :name %><br />
-      <%= f.text_field :name, autocomplete: "off" %></div>
+      <%= f.text_field :name, autocomplete: "off", required: true %></div>
 
     <%= f.radio_button(:gender, "male", checked: true) %>
     <%= f.label(:gender_male, "I am male") %>

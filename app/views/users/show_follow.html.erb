@@ -15,7 +15,7 @@
               <div class="col-md-1 col-sm-3 col-xs-3"> <%= image_tag user.avatar.url(:small) %></div>  
               <div  class="col-md-6 col-sm-6 col-xs-7 pull-right"> 
               	<div id="center">
-                  <strong><%=link_to "#{cut_name(user.email)}", user_path(user)%></strong>
+                  <strong><%=link_to user.name, user_path(user)%></strong>
                 </div>
               </div>
             </div>

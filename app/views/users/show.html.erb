@@ -15,11 +15,7 @@ $(document).ready(function(){
 	<div class="container col-md-6">
 	  <div class="container col-md-8 col-md-offset-1 col-sm-5 col-xs-8 user_header">  
 	    <div id="about">
-            <% unless (@user.name == "Unknown" || @user.name == "")%>
               <%= @user.name%>
-            <% else %>
-              <%= cut_name(@user.email)%>
-            <% end %>
 	    	</div></br>
 	    <div class="container-fluid">
 	      <div class="row-fluid col-md-6 col-sm-6 col-xs-6" >Joined:</div>
