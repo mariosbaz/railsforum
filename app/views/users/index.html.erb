@@ -19,7 +19,7 @@
                   </div>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3"> 
-                  <% unless user.name == "Unknown"%>
+                  <% unless (user.name == "Unknown" || user.name == nil)%>
                     <%= link_to user.name, user_path(user)%>
                   <% else %>
                     <%= link_to "#{cut_name(user.email)}", user_path(user)%>
@@ -47,7 +47,7 @@
             <div class="container-fluid" id="users_show">   
               <div class="col-md-4 col-sm-4 col-xs-4"> <%= image_tag user.avatar.url(:mini) %></div>  
               <div   class="col-md-7 col-sm-7 col-xs-7" id="user_index"> 
-                <% unless user.name == "Unknown"%>
+                  <% unless (user.name == "Unknown" || user.name == "")%>
                   <%= link_to user.name, user_path(user)%>
                 <% else %>
                   <%= link_to "#{cut_name(user.email)}", user_path(user)%>
