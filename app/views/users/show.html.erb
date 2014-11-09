@@ -11,7 +11,7 @@ $(document).ready(function(){
       	<div id="image"><%= image_tag @user.avatar.url(:medium) %></div>
       </div>
 	  <div class="container col-md-8">  
-	    <div class="container col-md-12" id="user_top"><%= @user.name %>	</div>
+	    <div class="container col-md-12" id="user_top"><%= @user.name %></div>
 	    <div class="container col-md-12" id="user_middle">
 	      <div class="row-fluid col-md-5" >Joined:</div>
 	      <div class="row-fluid col-md-5">
@@ -43,7 +43,6 @@ $(document).ready(function(){
 	  </div>	  
 	</div>	
   </div>      
-</div>
 
 <div class="row">
     <div class="col-md-7">
@@ -90,16 +89,14 @@ $(document).ready(function(){
 		        	  <% @feed_items.each do |item|%>
 			            <h3> <%= item.content[0..2] %>... about <%=time_ago_in_words(item.created_at)%> 
 			            	ago by  <strong><%= item.user.name %> </strong></h3>
-			            <div>
-			              <strong>
-			              	<div class="col-md-12" >Topic: <%=link_to item.topic.name,topic_path(item.topic_id)%></div></br>
-			              </strong>
-			              <div class="col-md-12" id="content_accordion">
-			              	 <%= item.content %> 
-			              	</div> 
-			            </div>
-		            <% end %>
-		        </div>
+				        <div>
+				          <strong>
+				            <div class="col-md-12" >Topic: <%=link_to item.topic.name,topic_path(item.topic_id)%></div></br>
+				          </strong>
+				          <div class="col-md-12" id="content_accordion"> <%= item.content %></div> 
+				          </div>
+			            <% end %>
+		            </div>
 			    </div>
 			  </div>
 			</div>    
@@ -140,7 +137,7 @@ $(document).ready(function(){
 	  <%end%>
 	</div>
   </div>
-  </div>
+</div>
 
 <% end %>
 
@@ -159,6 +156,7 @@ $(document).ready(function(){
     </div>
   </div>
 <% end %>
+</div>
 
 <p id="backtop">  
   <a href="#top"><span></span></a>
