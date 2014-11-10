@@ -15,7 +15,7 @@ describe User do
     it { expect(user).to respond_to(:votes) }
   end
 
-  it "has not a present email" do
+  it "has a present email" do
     expect(build(:user, email: nil)).not_to be_valid
   end
 
@@ -24,7 +24,7 @@ describe User do
   end 
   
   describe "destroy associations" do
-
+    
   	before do
   	  @topic = create(:topic, user: user) 	  
       @post = create(:post, user: user, topic: @topic)

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       @feed_items = current_user.feed.paginate(page: params[:page],
       	order:"created_at DESC",limit:10)
     end
-    @users = @user.following.paginate(page: params[:page])
+    @users = @user.following
   end
   
   def following

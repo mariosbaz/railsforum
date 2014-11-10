@@ -6,23 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Users
-User.create!(name:  "Example User",
-             email: "example@railforum.com",
-             password:              "1",
-             password_confirmation: "1",
-             created_at: Time.zone.now)
-
-# Microposts
+# Topics
 User.order(:created_at).take(6).each do |user|
-  50.times do
-    user.topics.create!(name: "123")
+  (1..50).each do |i|
+    user.topics.create!(name: "topic_#{i}")
   end
 end
 
-# Following relationships
-users = User.all
-user  = users.first
-following = users[2..50]
-followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+(1..50).each  do  |i| 
+  User.last.posts.create!(topic_id: Topic.last.id, content: "#{i**i}")
+end

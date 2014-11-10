@@ -6,14 +6,14 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.paginate(page: params[:page], order: 'created_at DESC')
+    @topics = Topic.paginate(page: params[:page], order: 'created_at ASC')
     @newtopics = Topic.all(order: "created_at DESC", limit: 5)
     @oldtopics = Topic.all(order: "created_at ASC", limit: 5)
   end
 
   def show
     @topic = Topic.find(params[:id])
-    @posts = @topic.posts.paginate(page: params[:page], order: 'created_at DESC')
+    @posts = @topic.posts.paginate(page: params[:page], order: 'created_at ASC')
   end 
 
   def edit
